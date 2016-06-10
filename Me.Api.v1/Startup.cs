@@ -15,11 +15,13 @@ namespace Me.Api.v1
     {
         public void Configuration(IAppBuilder app)
         {
-            HttpConfiguration httpConfig = new HttpConfiguration();
+            // For OWIN pipeline order of your configuration quite important.
             ConfigureOAuth(app);
+            app.UseCors(CorsOptions.AllowAll);
+            HttpConfiguration httpConfig = new HttpConfiguration();            
             WebApiConfig.Register(httpConfig);
             app.UseWebApi(httpConfig);            
-            app.UseCors(CorsOptions.AllowAll);
+            
         }
 
         public void ConfigureOAuth(IAppBuilder app)
@@ -28,11 +30,14 @@ namespace Me.Api.v1
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromSeconds(30),
-                Provider = new SimpleAuthorizationServerProvider()
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+                Provider = new SimpleAuthorizationServerProvider()                
             };
 
-            app.UseOAuthBearerTokens(OAuthServerOptions);
+            // app.UseOAuthBearerTokens(OAuthServerOptions);
+
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }
