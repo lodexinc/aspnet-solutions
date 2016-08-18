@@ -38,7 +38,7 @@ namespace ScrumWebApp
 
                       "~/Scripts/angular-spinkit/angular-spinkit.min.css",
 
-                      //"~/Scripts/angular-flash/angular-flash.css",
+                      "~/Scripts/angular-flash/angular-flash.css",
 
                       "~/Content/site.css"));
 

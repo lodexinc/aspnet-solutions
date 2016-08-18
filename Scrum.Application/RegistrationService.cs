@@ -25,7 +25,10 @@ namespace Scrum.Application
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerCommand.Password)
             };
 
-            this._userRepo.Save(user);
+            if (this._userRepo.FindByEmail(registerCommand.Email) == null)
+            {
+                this._userRepo.Save(user);
+            }           
         }
     }
 }

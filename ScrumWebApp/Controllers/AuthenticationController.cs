@@ -55,7 +55,6 @@ namespace ScrumWebApp.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             this._authenticationManager.SignOut();
