@@ -32,19 +32,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LinFu.DynamicProxy, Version=1.0.4.16035, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LinFu.DynamicProxy.OfficialRelease.1.0.5\lib\net\LinFu.DynamicProxy.dll</HintPath>
+      <HintPath>..\..\..\packages\LinFu.DynamicProxy.OfficialRelease.1.0.5\lib\net\LinFu.DynamicProxy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Interception, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+      <HintPath>..\..\..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Interception.LinFu, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Ninject.Extensions.Interception.Linfu.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.LinFu.dll</HintPath>
+      <HintPath>..\..\..\packages\Ninject.Extensions.Interception.Linfu.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.LinFu.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
