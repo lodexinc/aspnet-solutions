@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@section scripts {
+    <script src="~/Scripts/App/About/about.module.js"></script>
+    <script src="~/Scripts/App/About/Controllers/about.controller.js"></script>
+}
+@section jsCode {
+    angular.bootstrap(document.getElementById("mainBody"), ['AboutModule']);
+}
+
+<div data-ng-controller="AboutController">
+    <h2>{{ pageHeading }}</h2>
+    <p>Use this area to provide additional information.</p>
+
+    <div>
+
+    </div>
+
+
+
+</div>
+
+
+

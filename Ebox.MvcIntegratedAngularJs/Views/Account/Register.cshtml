@@ -1,0 +1,57 @@
+﻿@model Ebox.MvcIntegratedAngularJs.Feature.Registration.RegistrationCommand
+
+@{
+    ViewBag.Title = "Register";
+}
+@section scripts {
+    <script src="~/Scripts/App/Register/register.module.js"></script>
+    <script src="~/Scripts/App/Register/Controllers/register.controller.js"></script>
+}
+
+
+@section jsCode {
+        $(document).ready(function() {
+        $("#registerForm").attr("block-ui", "");
+        $("#registerForm").attr("block-ui-pattern", "{{blockPattern}}");
+       angular.bootstrap(document.getElementById("mainBody"), ['RegisterModule']);
+
+    });
+    
+}
+
+<div data-ng-controller="RegisterController as self">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-9 col-xs-offset-1">
+            <div class="page-header">
+                <h1>Please register...</h1>
+            </div>
+            <form id="registerForm" name="registerForm" 
+                  valdr-type="Register" novalidate 
+                  role="form" 
+                  ng-submit="registerForm.$valid && self.register()">
+                <div class="form-group" valdr-form-group>
+                    <input id="email" name="email" type="text" class="form-control" ng-model="self.RegisterCommand.email" placeholder="Enter your email" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <input id="password" name="password" type="password" class="form-control" ng-model="self.RegisterCommand.password" placeholder="Enter your password" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <input id="firstName" name="firstName" type="text" class="form-control" ng-model="self.RegisterCommand.firstName" placeholder="Enter your first name" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <input id="lastName" name="lastName" type="text" class="form-control" ng-model="self.RegisterCommand.lastName" placeholder="Enter your last name" />
+                </div>
+
+                <div class="form-group">
+                    <button data-spinner-color="black" data-style="zoom-in" ng-ladda="register" class="btn btn-default btn-block" type="submit" ng-disabled="registerForm.$invalid">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,70 @@
+﻿@using Newtonsoft.Json
+@model Ebox.MvcIntegratedAngularJs.Feature.UserProfile.EditProfileCommand
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+@section scripts {
+    <script src="~/Scripts/App/EditProfile/edit-profile.module.js"></script>
+    <script src="~/Scripts/App/EditProfile/Controllers/edit-profile.controller.js"></script>
+}
+
+
+@section jsCode {
+    $(document).ready(function() {
+    $("#editProfileForm").attr("block-ui", "");
+    $("#editProfileForm").attr("block-ui-pattern", "{{blockPattern}}");
+    angular.bootstrap(document.getElementById("mainBody"), ['EditProfileModule']);
+    });
+
+}
+
+<div data-ng-controller="EditProfileController as self">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-9 col-xs-offset-1">
+            <div class="page-header">
+                <h1>Update your profile</h1>
+            </div>
+            <form id="editProfileForm" name="editProfileForm"
+                  valdr-type="EditProfile" novalidate
+                  role="form"
+                  ng-submit="editProfileForm.$valid && self.saveProfile()"
+                  ng-init="init(@JsonConvert.SerializeObject(Model))">
+
+                <div class="form-group" valdr-form-group>
+                    <input id="email" disabled="disabled" name="email" type="text" class="form-control" ng-model="self.EditProfile.Email" placeholder="Enter your email" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <input id="firstName" name="firstName" type="text" class="form-control" ng-model="self.EditProfile.FirstName" placeholder="Enter your first name" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <input id="lastName" name="lastName" type="text" class="form-control" ng-model="self.EditProfile.LastName" placeholder="Enter your last name" />
+                </div>
+
+                <div class="form-group" valdr-form-group>
+                    <p class="input-group">
+                        <input id="dateOfBirth" name="dateOfBirth" type="text"
+                               class="form-control" uib-datepicker-popup="{{format}}"
+                               ng-model="self.EditProfile.DateOfBirth"
+                               is-open="popup1.opened"
+                               datepicker-options="dateOptions"
+                               close-text="Close" alt-input-formats="altInputFormats" />
+
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <button data-spinner-color="black" data-style="zoom-in" ng-ladda="editProfile" class="btn btn-default btn-block" type="submit" ng-disabled="editProfileForm.$invalid">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

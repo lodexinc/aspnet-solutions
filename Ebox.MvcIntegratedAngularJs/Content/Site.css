@@ -1,0 +1,34 @@
+﻿body {
+    padding-top: 55px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+.valdr-message {
+    display: none;
+}
+
+    .valdr-message.ng-invalid.ng-touched.ng-dirty {
+        display: inline;
+        font-size: small;
+        font-weight: bold;
+        color: red;
+    }
+
+.navbar-text img {
+    max-height: 30px;
+    width: auto;
+}
