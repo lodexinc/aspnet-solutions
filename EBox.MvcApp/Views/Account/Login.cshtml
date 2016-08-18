@@ -1,0 +1,122 @@
+﻿
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 left">
+        <div class="row">
+            <h2 style="text-align:left;">JobSeeker Sign In</h2>
+            <p>Choose one of the following sign in methods</p>
+        </div>
+        <div class="row">
+            @using (Html.BeginForm("ExternalLinkLogin", "Account", FormMethod.Post))
+            {
+                // Form Elements here
+                <div class="col-md-6 left">
+                    <button type="submit" name="provider" value="Facebook" class="btn btn-block btn-social btn-facebook">
+                        <span class="fa fa-facebook"></span>
+                        Facebook
+                    </button>
+                </div>
+                <div class="col-md-6" style="padding-right:0px;">
+                    <button type="submit" name="provider" value="Google" class="btn btn-block btn-social btn-google">
+                        <span class="fa fa-google"></span>
+                        Google
+                    </button>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3 class="line"><span class="line-center">OR</span></h3>
+</div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 left">
+        <form name="form" ng-submit="login()">
+            <div class="row">
+                <label class="required" for="emailAddress">Email Address <span style="color:red;">*</span></label>
+            </div>
+            <div class="row">
+                <input placeholder="Please enter your email address" class="input"                   
+                       id="emailAddress" name="emailAddress"
+                       ng-model="loginForm.emailAddress" required
+                       ng-pattern="/^[A-Za-z0-9._%+-]+@("@")[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/"
+                       />
+                <span ng-show="form.emailAddress.$error.email || form.emailAddress.$error.pattern" class="errorMss">The email address you entered is not valid</span>
+            </div>
+            <div class="row"><p /> </div><div class="row"><p /></div>
+            <div class="row">
+                <label class="required" for="password">Password <span style="color:red;">*</span></label>
+            </div>
+            <div class="row">
+                <input placeholder="Please enter your password" class="input" 
+                       ng-minlength="6" name="password" type="password" id="password" required                       
+                        ng-model="loginForm.password"  />
+                <span ng-show="form.password.$error.minlength" class="errorMss">The passsword you entered is not valid</span>
+                
+            </div>
+
+            <div class="row">
+                <div style="padding-left:0px;" class="col-md-6">
+                    <input type="checkbox" id="rememberMe" ng-model="loginForm.rememberMe"  />
+                    <label for="rememberMe">Keep me logged in</label>
+                </div>
+                <div style="text-align:right; padding-right:0px;" class="col-md-6">
+                    <a class="link">Forgot passsword?</a>
+                </div>
+            </div>
+            <div class="row"><p /> </div><div class="row"><p /></div>
+            <div class="row">
+                <button ng-disabled="form.$invalid" class="btn btn-primary" style="width:100%; text-align:center;" type="submit">Sign In</button>
+            </div>
+            <div class="errorMss row" ng-show="loginForm.loginFailure">
+                {{loginForm.LoginErrMess}}
+            </div>
+            
+            <div class="row">
+                <label>Don't have a ECSA account?</label>
+                <a ui-sref="register" class="link">Sign Up</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+<style>
+    a.link {
+        text-decoration: underline;
+    }
+    .input {
+        width:100%;
+        max-width:none !important;
+    }
+    .left {
+        text-align: left;
+        padding-left:0px;
+    }
+    .line-center{
+        margin:0;padding:0 10px;
+        background:#fff;
+        display:inline-block;
+    }
+    .line{
+    
+        text-align:center;
+        position:relative;
+        z-index:2;
+    
+    }
+    .line:after{
+        content:"";
+        position:absolute;
+        top:50%;
+        left:0;
+        right:0;
+        border-top:solid 1px black;
+        z-index:-1;
+    }
+</style>
+

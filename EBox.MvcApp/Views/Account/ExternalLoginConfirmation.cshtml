@@ -1,0 +1,54 @@
+﻿
+@model EBox.MvcApp.Models.ExternalLoginConfirmationViewModel
+
+@{
+    ViewBag.Title = "External Login Confirm";
+}
+
+<div class="row form">
+    <div class="row col-md-5 col-md-offset-4 left">
+        <p><span class="fa fa-google"></span> You are currently logged in as @Html.DisplayFor(model => model.Email)  <a ng-click="" class="link">Log Out</a></p>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 col-md-offset-4 left">
+        <div class="row">
+            <h3>Wellcome to ECSA</h3>
+            <p>Complete sign up to link your ECSA account and Google accounts. Once linked, you can directly sign in to ECSA using your Google account</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 col-md-offset-4 left">
+        <form name="form" ng-submit="confirm()" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+            <div class="row">
+                <label class="required" for="emailAddress">Email Address <span style="color:red;">*</span></label>
+            </div>
+            <div class="row">
+                <input placeholder="Please enter your email address" class="input"
+                       id="emailAddress" name="emailAddress"
+                       ng-model="userConfirmLoginForm.email" disabled />
+            </div>
+            <div class="row"><p /> </div><div class="row"><p /></div>
+            <div class="row">
+                <label class="required" for="password">Password <span style="color:red;">*</span></label>
+            </div>
+            <div class="row">
+                <input placeholder="Please enter your password" class="input"
+                       ng-minlength="6" name="password" type="password" id="password" required
+                       ng-model="userConfirmLoginForm.password" />
+                <span ng-show="form.password.$error.minlength" class="help-block error">The passsword you entered is not valid</span>
+
+            </div>
+
+            <div class="row"><p /> </div><div class="row"><p /></div>
+            <div class="row">
+                <button ng-disabled="form.$invalid" class="btn btn-primary" style="width:100%; text-align:center;" type="submit">Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class= "form-header">
+                <p style="font-weight: bold;font-size:20px">Milion of jobs.Find yours on ECSA</p>
+                <p>Already have an ECSA account? <a id="sign-in" href="/signin" >Sign In</a></p>
+                <p>Choose one of the following sign up methods</p>
+                <div class="social">
+                    <a href="#"><div class="fb"><i class="fa fa-facebook-f"></i> &nbsp; Facebook</div></a>
+                    <a href="#"><div class="gm"><i class="fa fa-google-plus"></i> &nbsp; Google</div></a>
+                </div>
+                <p style="margin-top:10px">*We never share your email with any else</p>
+            </div>
+            <div class="or-divider">
+                <span class="or-divider-text">OR</span>
+            </div>
+            <form name="form" class="form-horizontal" ng-submit="register()">
+           
+                <div class="control-group">
+                    <label class="control-label required" for="firstName">First Name</label>
+                    <div class="controls">
+                        <input ng-model="registerForm.firstName" required type="text" id="firstName" name="firstName" placeholder="Please enter for first name" class="form-control" />
+                        <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First Name is required</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required" for="lastName">Last Name</label>
+                    <div class="controls">
+                        <input ng-model="registerForm.lastName" required type="text" id="lastName" name="lastName" placeholder="Please enter for last name" class="form-control">
+                        <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last Name is required</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label required" for="email">Email Address</label>
+                    <div class="controls">
+                        <input ng-model="registerForm.email" ng-pattern="/^[A-Za-z0-9._%+-]+@("@")[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" type="email" id="email" name="email" placeholder="Please enter for email address" class="form-control">
+                        <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email address is required</span>
+                        <span ng-show="form.email.$error.pattern" class="help-block">Email address is not valid</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label required" for="password">Password</label>
+                    <div class="controls">
+                        <input ng-model="registerForm.password"  ng-minlength="6" required type="password" id="password" name="password" placeholder="Please enter for password" class="form-control">
+                        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                        <span ng-show="form.password.$error.minlength" class="help-block">Minimum 6 characters in length</span>
+                    </div>
+                </div>
+                    <p>Email me career-related ECSA updates and job opportunities</p>
+                <p>ECSA will automaticcally email job postings that are relevant to you</p>
+                <div>
+                    <p>
+                        By continuing,you agree to ECSA's 
+                        <a id="privacy" href="javascript:void(0)" ng-click="showPrivacyModal()">Privacy Policy</a>,
+                        <a id="terms" href="javascript:void(0)" ng-click="showModal()">Terms of Use</a> and you of cookies.
+                    </p>
+                </div>
+
+                <div class="control-group">
+                    <div class="register-button">
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>  
+<style>
+    .social {
+        height: 30px;
+        line-height: 30px;
+        display: table;
+        width: 100%;
+    }
+
+        .social div {
+            display: inline-block;
+            width: 42%;
+            color: #eee;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+            .social div i.fa {
+                font-size: 16px;
+                line-height: 30px;
+            }
+
+    .fb {
+        background: #3B5A9A;
+        border-bottom: solid 3px #036;
+    }
+
+    .gm {
+        background: #df5231;
+        margin-left: 16%;
+        border-bottom: solid 3px #a42822;
+    }
+    .or-divider {
+    margin: 24px 0;
+    text-align: center;
+    border-top: 1px solid #ebebeb;
+    height: 0;
+     position: relative; 
+}
+    .or-divider .or-divider-text {
+    color: #757575;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+    padding: 8px;
+    background: #fff;
+    border-radius: 20px;
+    margin: 0 auto;
+   position: relative;
+    top: -19px;
+}
+    .form-control{
+        border-radius:0;
+    }
+
+    label {
+    font-weight: normal;
+}
+label.required {
+    font-weight: bold;
+}
+label.required:after {
+    content: '*';
+    padding-left: 5px;
+    color: red;
+}
+
+.control-group{
+    margin-top:20px
+}
+
+.register-button{
+    text-align: center;
+}
+
+.register-button .btn.btn-primary{
+    width:100%
+}
+</style>

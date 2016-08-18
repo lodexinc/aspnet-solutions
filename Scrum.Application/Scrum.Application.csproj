@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationService.cs" />
+    <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IRegistrationService.cs" />

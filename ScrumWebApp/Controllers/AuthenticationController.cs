@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Scrum.Application;
+using Scrum.Application.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,9 @@ using System.Net;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Infrastructure.Valication.Mvc;
 
-namespace Ebox.MvcIntegratedAngularJs.Controllers
+namespace ScrumWebApp.Controllers
 {
     public class AuthenticationController : Controller
     {
@@ -29,10 +31,8 @@ namespace Ebox.MvcIntegratedAngularJs.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult SignIn(LoginCommand logInCommand)
+        public ActionResult SignIn(LogInCommand logInCommand)
         {
-            System.Threading.Thread.Sleep(5000);
-
             if (ModelState.IsValid && this._authenticationService.Validate(logInCommand.Email, logInCommand.Password))
             {
                 var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Email, logInCommand.Email), }, DefaultAuthenticationTypes.ApplicationCookie);
