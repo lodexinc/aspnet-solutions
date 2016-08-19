@@ -21,66 +21,66 @@
 }
 
 
+
+
 <div data-ng-controller="SignInController as self">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-9 col-xs-offset-1">
-            <div class="page-header">
-                <h1>Please sign in...</h1>
-            </div>
-            <form id="signInForm" name="signInForm" valdr-type="SignIn" novalidate role="form" ng-submit="signInForm.$valid && self.signIn()">
-                <div class="form-group" valdr-form-group>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
-                        </span>
-                        <input id="email" name="email" type="text" class="form-control" ng-model="self.SignInCommand.email" placeholder="Enter your email" />
-                    </div>
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Sign In</h1>
                 </div>
+                <div class="panel-body">
 
-                <div class="form-group" valdr-form-group>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
-                        </span>
-                        <input id="password" name="password" type="password" class="form-control" ng-model="self.SignInCommand.password" placeholder="Enter your password" />
-                    </div>
-                </div>
+                    <form id="signInForm" name="signInForm" valdr-type="SignIn" novalidate role="form" ng-submit="signInForm.$valid && self.signIn()">
+                        <div class="form-group" valdr-form-group>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input id="email" name="email" type="text" class="form-control" ng-model="self.SignInCommand.email" placeholder="Enter your email" />
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <checkbox id="remember" ng-model="self.SignInCommand.rememberMe"></checkbox>
-                    <label for="remember">
-                        Keep me logged in
-                    </label>
-                </div>
+                        <div class="form-group" valdr-form-group>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input id="password" name="password" type="password" class="form-control" ng-model="self.SignInCommand.password" placeholder="Enter your password" />
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <button data-spinner-color="black" data-style="zoom-in" ng-ladda="sign-in" class="btn btn-default btn-block" type="submit" ng-disabled="signInForm.$invalid">
-                        <span class="glyphicon glyphicon-log-in"></span>
-                        Sign In
-                    </button>
+                        <div class="form-group">
+                            <checkbox id="remember" ng-model="self.SignInCommand.rememberMe"></checkbox>
+                            <label for="remember">
+                                Keep me logged in
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <button data-spinner-color="black" data-style="zoom-in" ng-ladda="sign-in" class="btn btn-default btn-block" type="submit" ng-disabled="signInForm.$invalid">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
+                <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             @Html.ActionLink("Register", "Register", "Account")
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                            @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account")
+                        <div class="col-md-8 col-sm-8 col-xs-8 text-right">
+                            @Html.ActionLink("Unable to access your account?", "ForgotPassword", "Account")
                         </div>
                     </div>
+                </div>
 
-                </div>
-                <div class="form-group" ng-show="self.SignInCommand.debug">
-                    <textarea class="form-control" rows="10">{{ signInForm.$error | json }}</textarea>
-                </div>
-            </form>
+            </div>
+
         </div>
     </div>
-    <checkbox ng-model="self.SignInCommand.debug"></checkbox>
-    <label for="debug">
-        Debug
-    </label>
-
 </div>
 
 

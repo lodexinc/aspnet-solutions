@@ -40,11 +40,16 @@ namespace ScrumWebApp
 
                       "~/Scripts/angular-flash/angular-flash.css",
 
+                      "~/Scripts/ng-ui-select/select.css",
+
+                      "~/Scripts/textAngular/textAngular.css",
+
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular/angular.js",
                 "~/Scripts/angular/angular-animate.js",
+                "~/Scripts/angular/angular-sanitize.js",
                 "~/Scripts/angular/angular-route.js",
                 "~/Scripts/angular/angular-bootstrap-checkbox.js",
                 "~/Scripts/ui-router/angular-ui-router.js",
@@ -69,6 +74,14 @@ namespace ScrumWebApp
                  "~/Scripts/angular-spinkit/angular-spinkit.js",
 
                  "~/Scripts/angular-flash/angular-flash.js",
+
+                 "~/Scripts/ng-ui-select/select.js",
+
+                 "~/Scripts/textAngular/textAngular-rangy.min.js",
+                 "~/Scripts/textAngular/textAngular-sanitize.js",
+                 "~/Scripts/textAngular/textAngular.js",
+                 "~/Scripts/textAngular/textAngular.umd.js",
+                 "~/Scripts/textAngular/textAngularSetup.js",
 
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));

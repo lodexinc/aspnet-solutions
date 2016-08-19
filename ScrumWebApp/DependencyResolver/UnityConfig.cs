@@ -10,7 +10,6 @@ namespace ScrumWebApp
 {
     public class UnityConfig
     {
-
         public static void RegisterComponents()
         {
             var container = new UnityContainer();

@@ -191,6 +191,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\icon-scrum.png" />
     <Content Include="Content\loading-bar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -223,6 +224,7 @@
     <Content Include="Scripts\angular-toastr\angular-toastr.theme.css" />
     <Content Include="Scripts\angular-toastr\angular-toastr.tpls.js" />
     <Content Include="Scripts\angular-toastr\angular-toastr.tpls.min.js" />
+    <Content Include="Scripts\angular\angular-sanitize.js" />
     <Content Include="Scripts\angular\angular.min.js.map" />
     <Content Include="Scripts\angular-block-ui\angular-block-ui.css.map" />
     <Content Include="Scripts\angular-block-ui\angular-block-ui.js.map" />
@@ -273,6 +275,10 @@
     <Content Include="Scripts\ng-ladda\ladda.min.js" />
     <Content Include="Scripts\ng-ladda\ng-ladda.css" />
     <Content Include="Scripts\ng-ladda\ng-ladda.js" />
+    <Content Include="Scripts\ng-ui-select\select.css" />
+    <Content Include="Scripts\ng-ui-select\select.js" />
+    <Content Include="Scripts\ng-ui-select\select.min.css" />
+    <Content Include="Scripts\ng-ui-select\select.min.js" />
     <Content Include="Scripts\re-tree\re-tree.js" />
     <Content Include="Scripts\re-tree\re-tree.min.js" />
     <Content Include="Scripts\respond.js" />
@@ -280,6 +286,14 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\spinjs\spin.min.js" />
+    <Content Include="Scripts\textAngular\textAngular-rangy.min.js" />
+    <Content Include="Scripts\textAngular\textAngular-sanitize.js" />
+    <Content Include="Scripts\textAngular\textAngular-sanitize.min.js" />
+    <Content Include="Scripts\textAngular\textAngular.css" />
+    <Content Include="Scripts\textAngular\textAngular.js" />
+    <Content Include="Scripts\textAngular\textAngular.min.js" />
+    <Content Include="Scripts\textAngular\textAngular.umd.js" />
+    <Content Include="Scripts\textAngular\textAngularSetup.js" />
     <Content Include="Scripts\ui-bootstrap\ui-bootstrap-tpls-2.0.1.js" />
     <Content Include="Scripts\ui-router\angular-ui-router.js" />
     <Content Include="Scripts\valdr\valdr-message.js" />
@@ -301,8 +315,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Scripts\ng-idle\angular-idle.map" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Authentication\SignIn.cshtml" />
+    <Content Include="Views\Shared\_HorizontalMenu.cshtml" />
+    <Content Include="Views\Shared\_CreateIssue.cshtml" />
+    <Content Include="Scripts\ng-ui-select\select.min.css.map" />
+    <Content Include="Scripts\ng-ui-select\select.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
