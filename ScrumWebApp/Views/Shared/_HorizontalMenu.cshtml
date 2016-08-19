@@ -8,24 +8,9 @@
     <script type="text/ng-template" id="myModalContent.html">
         @*<circle-spinner ng-hide="isCreateIssueModelLoaded"></circle-spinner>*@
         @Html.Partial("_CreateIssue")
-        @*<div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>*@
     </script>
 
-    <ul class="nav navbar-nav navbar-left">
+    <ul class="nav navbar-nav">
         <li uib-dropdown on-toggle="toggled(open)">
             <a id="dashboard-dropdown" uib-dropdown-toggle href="#" popover-placement="bottom-left">Dashboards<span class="caret"></span></a>
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="dashboard-dropdown">
@@ -51,14 +36,17 @@
             </ul>
         </li>
         <li>
-            <button class="btn btn-warning navbar-btn btn-block" ng-click="open('lg')">Create</button>
+            <button class="btn btn-info navbar-btn btn-block" ng-click="open('lg')">Create</button>
         </li>
     </ul>
 
-    using (Html.BeginForm("LogOff", "Authentication", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+
+
+    using (Html.BeginForm("LogOff", "Authentication", FormMethod.Post, new { id = "logoutForm" }))
     {
 
         <ul class="nav navbar-nav navbar-right">
+
             <li role="presentation"><a href="#"><span class="glyphicon glyphicon-bell"></span><span class="badge">3</span></a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@email.Value <span class="caret"></span></a>
@@ -69,7 +57,8 @@
 
                     <li class="nav-divider"></li>
                     <li>
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Sign Out
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            Sign Out
                         </a>
                     </li>
 
@@ -77,6 +66,18 @@
             </li>
         </ul>
     }
+
+
+    <form class="navbar-form navbar-right" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="home.search.keyword" placeholder="Enter keyword" />
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default" ng-click="home.beginSearch()">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
 }
 else
 {
@@ -95,3 +96,4 @@ else
         </li>
     </ul>
 }
+
