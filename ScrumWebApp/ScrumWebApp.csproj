@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="DependencyResolver\UnityConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -334,6 +335,7 @@
     <Folder Include="Scripts\App\Register\Services\" />
     <Folder Include="Scripts\App\SignIn\Directives\" />
     <Folder Include="Scripts\App\SignIn\Services\" />
+    <Folder Include="Views\Issue\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

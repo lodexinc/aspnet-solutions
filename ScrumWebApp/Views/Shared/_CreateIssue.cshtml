@@ -3,8 +3,10 @@
     <h3 class="modal-title">Create issue</h3>
 </div>
 
+
 <div class="modal-body">
     <div class="row" ng-controller="CreateIssueController as self">
+        <style type="text/css" ng-bind-html="self.modalHeight"></style>
         <div class="col-md-12 col-sm-12 col-xs-12">
 
             <form id="createIssueForm" name="createIssueForm" class="form-horizontal"
@@ -13,7 +15,7 @@
                   ng-submit="createIssueForm.$valid && self.createIssue()">
                 <div class="form-group" valdr-form-group>
                     <label for="project" class="control-label col-md-2 col-sm-4">Project<span class="text-danger">*</span></label>
-                    <div class="col-md-4 col-sm-8">
+                    <div class="col-md-6 col-sm-8">
                         <ui-select ng-model="self.issueTypeSelected" theme="bootstrap">
                             <ui-select-match placeholder="Select or search a project">{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
@@ -27,7 +29,7 @@
 
                 <div class="form-group" valdr-form-group>
                     <label for="issueType" class="control-label col-md-2  col-sm-4">Issue Type<span class="text-danger">*</span></label>
-                    <div class="col-md-4 col-sm-8">                        
+                    <div class="col-md-6 col-sm-8">                        
                         <ui-select ng-model="self.issueTypeSelected" theme="bootstrap">
                             <ui-select-match placeholder="Select or search a issue type">{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">

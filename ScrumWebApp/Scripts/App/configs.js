@@ -11,9 +11,9 @@
         .config(function (blockUIConfig) {
             blockUIConfig.message = 'Hang on!';
             blockUIConfig.delay = 0;
-            blockUIConfig.autoInjectBodyBlock = true;
+            blockUIConfig.autoInjectBodyBlock = false;
             blockUIConfig.blockBrowserNavigation = true;
-            blockUIConfig.template = '<div class=\"block-ui-overlay\"></div><div class=\"block-ui-message-container\" aria-live=\"assertive\" aria-atomic=\"true\"></div>';
+            blockUIConfig.template = '<div class=\"block-ui-overlay\"></div><div class=\"block-ui-message-container\" aria-live=\"assertive\" aria-atomic=\"true\"><circle-spinner></circle-spinner></div>';
         });
 
     angular.module('appCore')
