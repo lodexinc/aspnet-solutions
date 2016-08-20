@@ -11,7 +11,7 @@ namespace ScrumWebApp.Controllers
         // GET: Issue
         public ActionResult CreateIssue()
         {
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(3000);
             return PartialView("_CreateIssue");
         }
     }

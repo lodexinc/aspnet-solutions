@@ -96,12 +96,12 @@
     angular.module('appCore')
     .directive("remoteView", function ($templateRequest, $compile, $window) {
         return {
+            replace: true,
             scope: true,
             link: function (scope, element, attrs) {
                 element.append($compile('<cube-grid-spinner></cube-grid-spinner')(scope));
                 $templateRequest(attrs.url).then(function (html) {
-                    element.html('');
-                    element.append($compile(html)(scope));
+                    element.replaceWith($compile(html)(scope));
                 });
             }
         };
