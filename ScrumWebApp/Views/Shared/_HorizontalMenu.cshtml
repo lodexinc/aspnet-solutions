@@ -5,8 +5,9 @@
 
     var email = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Email);
 
-    <script type="text/ng-template" id="myModalContent.html">        
-        <div url="/Issue/CreateIssue" remote-view></div>
+    <script type="text/ng-template" id="myModalContent.html">  
+        <cube-grid-spinner id="spinInModal"></cube-grid-spinner>      
+        @*<div url="/Issue/CreateIssue" remote-view></div>*@
     </script>    
 
     <ul class="nav navbar-nav">

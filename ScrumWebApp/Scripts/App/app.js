@@ -21,8 +21,8 @@
 
     angular.module('appCore').controller('NavController', NavController);
 
-    NavController.$inject = ['$scope', '$uibModal', '$log', '$window'];
-    function NavController($scope, $uibModal, $log, $window) {
+    NavController.$inject = ['$scope', '$http', '$uibModal', '$log', '$window', '$compile'];
+    function NavController($scope, $http, $uibModal, $log, $window, $compile) {
         $scope.toggled = function (open) {
             $log.log('Dropdown is now: ', open);
         };
@@ -49,14 +49,35 @@
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
+
+            modalInstance.rendered.then(function (selectedItem) {
+
+                //$http.get('/Issue/CreateIssue').then(function successCallback(response) {
+                //    var element = angular.element($("div.modal-content"));
+                //    var compiledHtml = $compile(response.data)($scope);
+                //    element.append(compiledHtml);
+                //}, function errorCallback(errorResponse) {
+
+                //});
+
+            }, function () {
+
+            });
         };
     }
 
     angular.module('appCore').controller('CreateModalInstanceController', CreateModalInstanceController);
 
-    CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'items'];
-    function CreateModalInstanceController($scope, $http, $uibModalInstance, items) {
+    CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'items', '$compile'];
+    function CreateModalInstanceController($scope, $http, $uibModalInstance, items, $compile) {
         $scope.items = items;
+        $http.get('/Issue/CreateIssue').then(function successCallback(response) {
+            var element = angular.element($("#spinInModal"));
+            var compiledHtml = $compile(response.data)($scope);
+            element.replaceWith(compiledHtml);
+        }, function errorCallback(errorResponse) {
+
+        });
         $scope.selected = {
             item: $scope.items[0]
         };
