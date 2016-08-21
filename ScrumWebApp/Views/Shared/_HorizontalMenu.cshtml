@@ -7,7 +7,6 @@
 
     <script type="text/ng-template" id="myModalContent.html">  
         <cube-grid-spinner id="spinInModal"></cube-grid-spinner>      
-        @*<div url="/Issue/CreateIssue" remote-view></div>*@
     </script>    
 
     <ul class="nav navbar-nav">
@@ -71,7 +70,7 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-header">@email.Value</li>
+                    <li class="dropdown-header text-uppercase"><strong>@email.Value</strong></li>
                     <li>@Html.ActionLink("Edit Profile", "EditProfile", "Profile")</li>
                     <li>@Html.ActionLink("My Applications", "My Applications", "Application")</li>
                     <li>@Html.ActionLink("My Resumes", "My Resumes", "Resume")</li>
