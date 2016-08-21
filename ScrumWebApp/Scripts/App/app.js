@@ -96,7 +96,7 @@
     CreateIssueController.$inject = ['$scope', '$window'];
     function CreateIssueController($scope, $window) {
         var self = this;
-        self.modalHeight = "div.modal-body { max-height: " + ($window.innerHeight - 230) + "px; overflow: auto  }";
+        self.modalHeight = "div.modal-body { max-height: " + ($window.innerHeight - 200) + "px; overflow: auto  }";
 
         var w = angular.element($window);
         $scope.$watch(
@@ -104,7 +104,7 @@
               return $window.innerHeight;
           },
           function (value) {
-              self.modalHeight = "div.modal-body { max-height: " + (value - 230) + "px; overflow: auto }";
+              self.modalHeight = "div.modal-body { max-height: " + (value - 200) + "px; overflow: auto }";
           },
           true
         );
