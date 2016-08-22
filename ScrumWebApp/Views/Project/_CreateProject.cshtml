@@ -1,6 +1,6 @@
 ﻿
 <div class="row" ng-controller="CreateProjectController as self">
-    <form id="createProjectForm" name="createProjectForm" class="form-horizontal"
+    <form id="createProjectForm" name="createProjectForm"
           valdr-type="CreateProject" novalidate
           role="form"
           ng-submit="createProjectForm.$valid && self.createProject()">
@@ -13,15 +13,15 @@
                 <style type="text/css" ng-bind-html="self.modalHeight"></style>
 
                 <div class="form-group" valdr-form-group>
-                    <label for="summary" class="control-label  col-md-2  col-sm-4">Name <span class="text-danger">*</span></label>
-                    <div class="col-sm-8">
+                    <label for="summary" class="control-label">Name <span class="text-danger">*</span></label>
+                    <div>
                         <input id="projectName" name="projectName" type="text" class="form-control" ng-model="self.CreateProjectCommand.name" placeholder="Enter name" />
                     </div>
                 </div>
 
                 <div class="form-group" valdr-form-group>
-                    <label for="reporter" class="control-label  col-md-2  col-sm-4">Key <span class="text-danger">*</span></label>
-                    <div class="col-sm-8">
+                    <label for="reporter" class="control-label">Key <span class="text-danger">*</span></label>
+                    <div>
                         <input id="projectKey" name="projectKey" type="text" class="form-control" ng-model="self.CreateProjectCommand.key" placeholder="Enter a key" />
                     </div>
                 </div>
