@@ -27,38 +27,21 @@
             $log.log('Dropdown is now: ', open);
         };
 
-        $scope.items = ['item1', 'item2', 'item3'];
         $scope.animationsEnabled = true;
-        $scope.open = function (size) {
+        $scope.open = function (size, url) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'myModalContent.html',
                 controller: 'CreateModalInstanceController',
                 size: size,
                 resolve: {
-                    items: function () {
-
-                        return $scope.items;
+                    url: function () {
+                        return url;
                     }
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-
             modalInstance.rendered.then(function (selectedItem) {
-
-                //$http.get('/Issue/CreateIssue').then(function successCallback(response) {
-                //    var element = angular.element($("div.modal-content"));
-                //    var compiledHtml = $compile(response.data)($scope);
-                //    element.append(compiledHtml);
-                //}, function errorCallback(errorResponse) {
-
-                //});
 
             }, function () {
 
@@ -68,22 +51,19 @@
 
     angular.module('appCore').controller('CreateModalInstanceController', CreateModalInstanceController);
 
-    CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'items', '$compile'];
-    function CreateModalInstanceController($scope, $http, $uibModalInstance, items, $compile) {
-        $scope.items = items;
-        $http.get('/Issue/CreateIssue').then(function successCallback(response) {
+    CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'url', '$compile'];
+    function CreateModalInstanceController($scope, $http, $uibModalInstance, url, $compile) {
+        $scope.url = url;
+        $http.get(url).then(function successCallback(response) {
             var element = angular.element($("#spinInModal"));
             var compiledHtml = $compile(response.data)($scope);
             element.replaceWith(compiledHtml);
         }, function errorCallback(errorResponse) {
 
         });
-        $scope.selected = {
-            item: $scope.items[0]
-        };
 
         $scope.ok = function () {
-            $uibModalInstance.close($scope.selected.item);
+            $uibModalInstance.close($scope.url);
         };
 
         $scope.cancel = function () {
@@ -114,18 +94,68 @@
         });
     }
 
-    angular.module('appCore')
-    .directive("remoteView", function ($templateRequest, $compile, $window) {
-        return {
-            replace: true,
-            scope: true,
-            link: function (scope, element, attrs) {
-                element.append($compile('<cube-grid-spinner></cube-grid-spinner')(scope));
-                $templateRequest(attrs.url).then(function (html) {
-                    element.replaceWith($compile(html)(scope));
-                });
+    angular.module('appCore').controller('CreateProjectController', CreateProjectController);
+
+    CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'valdrMessage', 'ValidationMessages', 'toastr'];
+    function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, valdrMessage, ValidationMessages, toastr) {
+        ngLaddaService.register('POST', '/Project/CreateProject', 'createProject');
+
+        valdr.addConstraints({
+            'CreateProject': {
+                'projectName': {
+                    'required': {
+                        'message': 'You need to provide a project name.'
+                    }
+                },
+                'projectKey': {
+                    'required': {
+                        'message': 'You need to provide a project key.'
+                    }
+                }
             }
+        });
+
+        var self = this;
+        self.CreateProjectCommand = {
+            name: "",
+            key: ""
         };
-    });
+
+        self.createProject = function () {
+            $http.post('/Project/CreateProject', self.CreateProjectCommand)
+                .then(function successCallback(response) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    // self.message = JSON.stringify(response);
+
+                    $scope.ok();
+                    toastr.success("Project have been created successfully.");
+
+                }, function errorCallback(errorResponse) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.                   
+                    toastr.error("Sorry! We cannot register you for now.");
+                });
+        };
+
+
+
+        self.modalHeight = "div.modal-body { max-height: " + ($window.innerHeight - 200) + "px; overflow: auto  }";
+
+        var w = angular.element($window);
+        $scope.$watch(
+          function () {
+              return $window.innerHeight;
+          },
+          function (value) {
+              self.modalHeight = "div.modal-body { max-height: " + (value - 200) + "px; overflow: auto }";
+          },
+          true
+        );
+
+        w.bind('resize', function () {
+            $scope.$apply();
+        });
+    }
 
 })();

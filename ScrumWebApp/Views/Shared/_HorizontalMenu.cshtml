@@ -23,7 +23,7 @@
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="project-dropdown">
                 <li>@Html.ActionLink("View all project", "ViewAll", "Project")</li>
                 <li class="nav-divider"></li>
-                <li>@Html.ActionLink("Create project", "Create", "Project")</li>
+                <li><a href="" ng-click="open('md', '/Project/CreateProject')">Create project</a></li>
             </ul>
         </li>
         <li uib-dropdown on-toggle="toggled(open)">
@@ -35,7 +35,7 @@
             </ul>
         </li>
         <li style="padding-left: 15px;">
-            <button class="btn btn-default navbar-btn" role="button" ng-click="open('lg')">Create</button>
+            <button class="btn btn-default navbar-btn" role="button" ng-click="open('lg', '/Issue/CreateIssue')">Create</button>
         </li>
     </ul>
 
