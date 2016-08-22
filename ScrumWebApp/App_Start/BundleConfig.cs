@@ -83,6 +83,8 @@ namespace ScrumWebApp
                  "~/Scripts/textAngular/textAngular.umd.js",
                  "~/Scripts/textAngular/textAngularSetup.js",
 
+                 "~/Scripts/smart-table/smart-table.js",
+
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));
         }

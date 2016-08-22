@@ -30,5 +30,10 @@ namespace Scrum.Application
                 this._projectRepository.Save(project);
             }
         }
+
+        public List<Project> getAllProjects()
+        {
+            return this._projectRepository.All();
+        }
     }
 }

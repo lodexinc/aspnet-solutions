@@ -14,7 +14,8 @@
             'angular-spinkit',
             'ngFlash',
             'ng.deviceDetector',
-            'textAngular'
+            'textAngular',
+            'smart-table'
     ];
 
     angular.module('appCore', dependencies);

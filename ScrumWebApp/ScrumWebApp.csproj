@@ -249,6 +249,8 @@
     <Content Include="Scripts\App\EditProfile\edit-profile.module.js" />
     <Content Include="Scripts\App\Home\Controllers\home.controller.js" />
     <Content Include="Scripts\App\Home\home.module.js" />
+    <Content Include="Scripts\App\ViewProject\Controllers\view-project.controller.js" />
+    <Content Include="Scripts\App\ViewProject\view-project.module.js" />
     <Content Include="Scripts\App\Register\Controllers\register.controller.js" />
     <Content Include="Scripts\App\Register\register.module.js" />
     <Content Include="Scripts\App\SignIn\Controllers\sign-in.controller.js" />
@@ -287,6 +289,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smart-table\smart-table.js" />
+    <Content Include="Scripts\smart-table\smart-table.min.js" />
     <Content Include="Scripts\spinjs\spin.min.js" />
     <Content Include="Scripts\textAngular\textAngular-rangy.min.js" />
     <Content Include="Scripts\textAngular\textAngular-sanitize.js" />
@@ -323,6 +327,8 @@
     <Content Include="Scripts\ng-ui-select\select.min.css.map" />
     <Content Include="Scripts\ng-ui-select\select.min.js.map" />
     <Content Include="Views\Project\_CreateProject.cshtml" />
+    <Content Include="Views\Project\ViewProjects.cshtml" />
+    <Content Include="Scripts\smart-table\smart-table.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +343,8 @@
     <Folder Include="Scripts\App\Register\Services\" />
     <Folder Include="Scripts\App\SignIn\Directives\" />
     <Folder Include="Scripts\App\SignIn\Services\" />
+    <Folder Include="Scripts\App\ViewProject\Directives\" />
+    <Folder Include="Scripts\App\ViewProject\Services\" />
     <Folder Include="Views\Issue\" />
   </ItemGroup>
   <ItemGroup>

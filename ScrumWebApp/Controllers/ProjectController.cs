@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ScrumWebApp.Controllers
 {
+    [Authorize]
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
@@ -25,7 +26,7 @@ namespace ScrumWebApp.Controllers
 
         public ActionResult CreateProject()
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(2000);
             return PartialView("_CreateProject");
         }
 
@@ -34,6 +35,23 @@ namespace ScrumWebApp.Controllers
         {
             this._projectService.CreateProject(createProjectCommand);
             return View();
+        }
+
+
+        public ActionResult ViewProjects()
+        {
+            return View();
+        }
+
+        public JsonResult SearchProject()
+        {
+            System.Threading.Thread.Sleep(2000);
+            var projects = this._projectService.getAllProjects();
+            return new JsonResult
+            {
+                Data = projects,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
         }
     }
 }

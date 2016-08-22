@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "View Projects";
+}
+
+@section scripts {
+    <script src="~/Scripts/App/ViewProject/view-project.module.js"></script>
+    <script src="~/Scripts/App/ViewProject/Controllers/view-project.controller.js"></script>
+}
+
+
+@section jsCode {
+    $(document).ready(function() {
+    $("#registerForm").attr("block-ui", "");
+    $("#registerForm").attr("block-ui-pattern", "{{blockPattern}}");
+    angular.bootstrap(document.getElementById("mainBody"), ['ViewProjectModule']);
+
+    });
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-3" style="line-height: 33px;">
+                <strong>Projects</strong>
+            </div>
+            <div class="col-md-10 col-sm-9 col-xs-9 text-right">
+                <button type="submit" class="btn btn-default btn-sm">Create new project</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <div ng-controller="ViewProjectController as self">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control input-sm" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table table-condensed table-striped" st-pipe="self.searchProject" st-table="self.projects">
+                        <thead>
+                            <tr>
+                                <th st-sort="name">Name</th>
+                                <th st-sort="key">Key</th>
+                                <th st-sort="lead">Project Lead</th>
+                            </tr>
+                        </thead>
+
+                        <tbody ng-show="!self.isLoading">
+                            <tr ng-repeat="project in self.projects">
+                                <td>{{project.Name}}</td>
+                                <td>{{project.Key}}</td>
+                                <td>{{project.Lead}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-show="self.isLoading">
+                            <tr>
+                                <td colspan="3"><cube-grid-spinner></cube-grid-spinner></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

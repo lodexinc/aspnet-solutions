@@ -11,7 +11,7 @@
 
     <ul class="nav navbar-nav">
         <li uib-dropdown on-toggle="toggled(open)">
-            <a id="dashboard-dropdown" uib-dropdown-toggle href="#" popover-placement="bottom-left"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Dashboards<span class="caret"></span></a>
+            <a id="dashboard-dropdown" uib-dropdown-toggle href="" popover-placement="bottom-left"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Dashboards<span class="caret"></span></a>
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="dashboard-dropdown">
                 <li>@Html.ActionLink("View system dashboard", "ViewSystemDashboard", "Dashboard")</li>
                 <li class="nav-divider"></li>
@@ -19,15 +19,15 @@
             </ul>
         </li>
         <li uib-dropdown on-toggle="toggled(open)">
-            <a id="project-dropdown" uib-dropdown-toggle href="#" popover-placement="bottom-left"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projects<span class="caret"></span></a>
+            <a id="project-dropdown" uib-dropdown-toggle href="" popover-placement="bottom-left"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projects<span class="caret"></span></a>
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="project-dropdown">
-                <li>@Html.ActionLink("View all project", "ViewAll", "Project")</li>
+                <li>@Html.ActionLink("View all project", "ViewProjects", "Project")</li>
                 <li class="nav-divider"></li>
                 <li><a href="" ng-click="open('md', '/Project/CreateProject')">Create project</a></li>
             </ul>
         </li>
         <li uib-dropdown on-toggle="toggled(open)">
-            <a id="issue-dropdown" uib-dropdown-toggle href="#" popover-placement="bottom-left"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Issues<span class="caret"></span></a>
+            <a id="issue-dropdown" uib-dropdown-toggle href="" popover-placement="bottom-left"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Issues<span class="caret"></span></a>
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="issue-dropdown">
                 <li>@Html.ActionLink("Search for issues", "SearchForIssue", "Issue")</li>
                 <li class="nav-divider"></li>
