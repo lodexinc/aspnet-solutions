@@ -49,7 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IProjectRepository.cs" />
     <Compile Include="IUserRepository.cs" />
+    <Compile Include="Migrations\201608181244335_InitialCreate.cs" />
+    <Compile Include="Migrations\201608181244335_InitialCreate.Designer.cs">
+      <DependentUpon>201608181244335_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608220357047_Add-Project.cs" />
+    <Compile Include="Migrations\201608220357047_Add-Project.Designer.cs">
+      <DependentUpon>201608220357047_Add-Project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="ScrumDbContext.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +70,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608181244335_InitialCreate.resx">
+      <DependentUpon>201608181244335_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608220357047_Add-Project.resx">
+      <DependentUpon>201608220357047_Add-Project.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

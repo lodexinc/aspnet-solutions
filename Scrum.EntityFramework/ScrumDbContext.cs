@@ -10,6 +10,7 @@ namespace Scrum.EntityFramework
     public class ScrumDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         public ScrumDbContext() : base("ScrumDbContext")
         {

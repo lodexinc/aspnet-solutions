@@ -11,7 +11,7 @@ namespace Scrum.EntityFramework
     {
         private readonly ScrumDbContext _scrumDbContext = new ScrumDbContext();
 
-        public List<User> AllUsers()
+        public List<User> All()
         {
             return this._scrumDbContext.Users.ToList();
         }

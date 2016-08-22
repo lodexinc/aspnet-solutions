@@ -1,4 +1,5 @@
-﻿using Scrum.Application.Commands;
+﻿using Scrum.Application;
+using Scrum.Application.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace ScrumWebApp.Controllers
 {
     public class ProjectController : Controller
     {
+        private readonly IProjectService _projectService;
+
+        public ProjectController(IProjectService projectService)
+        {
+            this._projectService = projectService;
+        }
+
         // GET: Project
         public ActionResult Index()
         {
@@ -24,7 +32,7 @@ namespace ScrumWebApp.Controllers
         [HttpPost]
         public ActionResult CreateProject(CreateProjectCommand createProjectCommand)
         {
-            System.Threading.Thread.Sleep(3000);
+            this._projectService.CreateProject(createProjectCommand);
             return View();
         }
     }
