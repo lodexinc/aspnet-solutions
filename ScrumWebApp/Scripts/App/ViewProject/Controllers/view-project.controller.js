@@ -31,7 +31,7 @@
 
         ObserverService.attach(self.globalSearch, 'project_created', 'viewProject');
         $scope.$on('$destroy', function handler() {
-            ObserverService.detachByEvent('project_created');
+            ObserverService.detachByEventAndId('project_created', 'viewProject');
         });
     };
 })();
