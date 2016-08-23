@@ -76,8 +76,8 @@ function CreateModalInstanceController($scope, $http, $uibModalInstance, url, $c
     };
 }
 
-CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'valdrMessage', 'ValidationMessages', 'toastr', 'ObserverService'];
-function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, valdrMessage, ValidationMessages, toastr, ObserverService) {
+CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
+function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
     var self = this;
     watchWindowHeight(self, $scope, $window);
     ngLaddaService.register('POST', '/Project/CreateProject', 'createProject');
@@ -118,17 +118,70 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
                 toastr.error("Sorry! We cannot register you for now.");
             });
     }
-
-
-
-
 }
 
-CreateIssueController.$inject = ['$scope', '$window'];
-function CreateIssueController($scope, $window) {
+CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
+function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
     var self = this;
     watchWindowHeight(self, $scope, $window);
+    ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
+    ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
+    ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
 
+
+    valdr.addConstraints(issueValidationProvider());
+
+    self.CreateIssueCommand = {
+        ProjectID: "",
+        IssueTypeID: "",
+        Summary: "",
+        ReporterID: "",
+        Description: "",
+        PriorityID: "",
+        Attachment: "",
+        AssigneeID: "",
+        SprintID: ""
+    };
+
+    self.createIssue = createIssue;
+
+    function issueValidationProvider() {
+        return {
+            'CreateIssue': {
+                'ProjectID': {
+                    'required': {
+                        'message': 'You need to select a project.'
+                    }
+                },
+                'IssueTypeID': {
+                    'required': {
+                        'message': 'You need to provide a issue type.'
+                    }
+                },
+                'Summary': {
+                    'required': {
+                        'message': 'You need to enter summary.'
+                    }
+                },
+                'ReporterID': {
+                    'required': {
+                        'message': 'You need to assign a reporter.'
+                    }
+                }
+            }
+        };
+    }
+
+    function createIssue() {
+        $http.post('/Issue/CreateIssue', self.CreateProjectCommand)
+            .then(function successCallback(response) {
+                $scope.ok();
+                toastr.success("Issue have been created successfully.");
+                ObserverService.notify('issue_created');
+            }, function errorCallback(errorResponse) {
+                toastr.error("Sorry!.");
+            });
+    }
 }
 
 function watchWindowHeight(controller, scope, window) {

@@ -49,7 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IIssueRepository.cs" />
     <Compile Include="IProjectRepository.cs" />
+    <Compile Include="Issue.cs" />
+    <Compile Include="IssueRepository.cs" />
+    <Compile Include="IssueType.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Migrations\201608181244335_InitialCreate.cs" />
     <Compile Include="Migrations\201608181244335_InitialCreate.Designer.cs">
@@ -59,7 +63,24 @@
     <Compile Include="Migrations\201608220357047_Add-Project.Designer.cs">
       <DependentUpon>201608220357047_Add-Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608230905387_add-issue-table.cs" />
+    <Compile Include="Migrations\201608230905387_add-issue-table.Designer.cs">
+      <DependentUpon>201608230905387_add-issue-table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608230909008_Update-Issue-Add-Key-Column.cs" />
+    <Compile Include="Migrations\201608230909008_Update-Issue-Add-Key-Column.Designer.cs">
+      <DependentUpon>201608230909008_Update-Issue-Add-Key-Column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608230914024_Update-Issue-Remove-MyProperty-Column.cs" />
+    <Compile Include="Migrations\201608230914024_Update-Issue-Remove-MyProperty-Column.Designer.cs">
+      <DependentUpon>201608230914024_Update-Issue-Remove-MyProperty-Column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608231000462_Add-Tables-IssueType-And-Priority.cs" />
+    <Compile Include="Migrations\201608231000462_Add-Tables-IssueType-And-Priority.Designer.cs">
+      <DependentUpon>201608231000462_Add-Tables-IssueType-And-Priority.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Priority.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectRepository.cs" />
     <Compile Include="ScrumDbContext.cs" />
@@ -77,6 +98,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608220357047_Add-Project.resx">
       <DependentUpon>201608220357047_Add-Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608230905387_add-issue-table.resx">
+      <DependentUpon>201608230905387_add-issue-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608230909008_Update-Issue-Add-Key-Column.resx">
+      <DependentUpon>201608230909008_Update-Issue-Add-Key-Column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608230914024_Update-Issue-Remove-MyProperty-Column.resx">
+      <DependentUpon>201608230914024_Update-Issue-Remove-MyProperty-Column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608231000462_Add-Tables-IssueType-And-Priority.resx">
+      <DependentUpon>201608231000462_Add-Tables-IssueType-And-Priority.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

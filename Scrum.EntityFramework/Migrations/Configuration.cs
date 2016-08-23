@@ -27,6 +27,21 @@ namespace Scrum.EntityFramework.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.IssueTypes.AddOrUpdate(
+              p => p.Name,
+              new IssueType { ID = Guid.NewGuid().ToString(), Name = "Story" },
+              new IssueType { ID = Guid.NewGuid().ToString(), Name = "Task" },
+              new IssueType { ID = Guid.NewGuid().ToString(), Name = "Bug" }
+            );
+
+            context.Priorities.AddOrUpdate(
+                p => p.Name,
+                new Priority { ID = Guid.NewGuid().ToString(), Name = "Low" },
+                new Priority { ID = Guid.NewGuid().ToString(), Name = "Medium" },
+                new Priority { ID = Guid.NewGuid().ToString(), Name = "High" },
+                new Priority { ID = Guid.NewGuid().ToString(), Name = "Highest" }
+                );
         }
     }
 }

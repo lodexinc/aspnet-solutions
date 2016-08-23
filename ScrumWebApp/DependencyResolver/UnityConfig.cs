@@ -15,9 +15,13 @@ namespace ScrumWebApp
             var container = new UnityContainer();
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IProjectRepository, ProjectRepository>();
+            container.RegisterType<IIssueRepository, IssueRepository>();
+
             container.RegisterType<IAuthenticationService, AuthenticationService>();
             container.RegisterType<IRegistrationService, RegistrationService>();
             container.RegisterType<IProjectService, ProjectService>();
+            container.RegisterType<IIssueService, IssueService>();
+
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

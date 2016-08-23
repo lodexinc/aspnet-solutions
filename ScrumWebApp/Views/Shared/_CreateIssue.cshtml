@@ -15,7 +15,7 @@
                 <div class="form-group" valdr-form-group>
                     <label for="project" class="control-label">Project<span class="text-danger">*</span></label>
                     <div class="row">
-                        <ui-select class="col-md-6" ng-model="self.issueTypeSelected" theme="bootstrap">
+                        <ui-select enable-valdr-validation enable-valdr-message name="ProjectID" class="col-md-6" ng-model="self.CreateIssueCommand.ProjectID" theme="bootstrap">
                             <ui-select-match placeholder="Select or search a project">{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
                                 <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -28,7 +28,7 @@
                 <div class="form-group" valdr-form-group>
                     <label for="issueType" class="control-label">Issue Type<span class="text-danger">*</span></label>
                     <div class="row">
-                        <ui-select class="col-md-6" ng-model="self.issueTypeSelected" theme="bootstrap">
+                        <ui-select enable-valdr-validation enable-valdr-message name="IssueTypeID" class="col-md-6" ng-model="self.CreateIssueCommand.IssueTypeID" theme="bootstrap">
                             <ui-select-match placeholder="Select or search a project">{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
                                 <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -38,30 +38,30 @@
                     </div>
                 </div>
                 <div class="form-group" valdr-form-group>
-                    <label for="summary" class="control-label">Summary <span class="text-danger">*</span></label>
+                    <label for="Summary" class="control-label">Summary <span class="text-danger">*</span></label>
                     <div>
-                        <input id="summary" name="summary" type="text" class="form-control" ng-model="self.RegisterCommand.email" placeholder="Enter summary" />
+                        <input id="summary" name="Summary" type="text" class="form-control" ng-model="self.CreateIssueCommand.Summary" placeholder="Enter summary" />
                     </div>
                 </div>
 
                 <div class="form-group" valdr-form-group>
                     <label for="reporter" class="control-label">Reporter <span class="text-danger">*</span></label>
                     <div>
-                        <input id="reporter" name="reporter" type="text" class="form-control" ng-model="self.RegisterCommand.email" placeholder="Enter reporter" />
+                        <input id="reporter" name="reporter" type="text" class="form-control" ng-model="self.CreateIssueCommand.ReporterID" placeholder="Enter reporter" />
                     </div>
                 </div>
 
                 <div class="form-group" valdr-form-group>
                     <label for="description" class="control-label">Description</label>
                     <div>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" ng-model="self.CreateIssueCommand.Description" rows="5"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group" valdr-form-group>
                     <label for="priority" class="control-label">Priority</label>
                     <div class="row">
-                        <ui-select class="col-md-6" ng-model="self.issueTypeSelected" theme="bootstrap">
+                        <ui-select class="col-md-6" ng-model="self.CreateIssueCommand.PriorityID" theme="bootstrap">
                             <ui-select-match>{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
                                 <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -81,7 +81,7 @@
                 <div class="form-group" valdr-form-group>
                     <label for="description" class="control-label">Assignee</label>
                     <div class="row">
-                        <ui-select class="col-md-6" ng-model="self.issueTypeSelected" theme="bootstrap">
+                        <ui-select class="col-md-6" ng-model="self.CreateIssueCommand.AssigneeID" theme="bootstrap">
                             <ui-select-match>{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
                                 <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -96,7 +96,7 @@
                 <div class="form-group" valdr-form-group>
                     <label for="description" class="control-label">Sprint</label>
                     <div class="row">
-                        <ui-select class="col-md-6" ng-model="self.issueTypeSelected" theme="bootstrap">
+                        <ui-select class="col-md-6" ng-model="self.CreateIssueCommand.SprintID" theme="bootstrap">
                             <ui-select-match>{{$select.selected.name}}</ui-select-match>
                             <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
                                 <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -112,7 +112,7 @@
                 <label for="createAnother">
                     Create another
                 </label>
-                <button data-spinner-color="black" data-style="zoom-in" ng-ladda="createIssue" class="btn btn-primary" type="button" ng-disabled="createIssueForm.$invalid" ng-click="ok()">Create</button>
+                <button data-spinner-color="black" data-style="zoom-in" ng-ladda="CreateIssue" class="btn btn-primary" type="button" ng-disabled="createIssueForm.$invalid">Create</button>
                 <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
             </div>
         </div>
