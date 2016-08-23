@@ -1,8 +1,8 @@
 ﻿(function () {
     var dependencies = [
             'ui.bootstrap',
-            'ui.select',
             'ngSanitize',
+            'ui.select',            
             'ui.checkbox',
             'ngAnimate', // needed by toastr
             'valdr',
@@ -122,6 +122,18 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
 
 CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
 function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
+
+
+    $scope.itemArray = [
+        { id: 1, name: 'first' },
+        { id: 2, name: 'second' },
+        { id: 3, name: 'third' },
+        { id: 4, name: 'fourth' },
+        { id: 5, name: 'fifth' },
+    ];
+
+    $scope.selectedItem = $scope.itemArray[0];
+
     var self = this;
     watchWindowHeight(self, $scope, $window);
     ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
@@ -144,6 +156,15 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     };
 
     self.createIssue = createIssue;
+
+    self.projects = [];
+
+    self.refreshProjects = function (name) {
+        return $http.get('/project/SearchProject?name=' + name)
+          .then(function (response) {
+              self.projects = response.data;
+          });
+    };
 
     function issueValidationProvider() {
         return {
@@ -173,6 +194,7 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     }
 
     function createIssue() {
+        self.CreateIssueCommand.ProjectID = self.ProjectSelected.ID;
         $http.post('/Issue/CreateIssue', self.CreateIssueCommand)
             .then(function successCallback(response) {
                 if (response.status !== 200) {

@@ -15,13 +15,19 @@
                 <div class="form-group" valdr-form-group>
                     <label for="ProjectID" class="control-label">Project<span class="text-danger">*</span></label>
                     <div class="row">
-                        <ui-select id="ProjectID" ng-model="self.CreateIssueCommand.ProjectID" enable-valdr-validation enable-valdr-message name="ProjectID" class="col-md-6" theme="bootstrap">
-                            <ui-select-match enable-valdr-validation enable-valdr-message placeholder="Select or search a project">{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices enable-valdr-validation enable-valdr-message  repeat="item in ctrl.people | filter: $select.search">
-                                <div ng-bind-html="item.name | highlight: $select.search"></div>
-                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                            </ui-select-choices>
-                        </ui-select>
+                        <div class="col-md-6">
+                            <ui-select ng-model="self.ProjectSelected">
+                                <ui-select-match>
+                                    <span ng-bind="$select.selected.Name"></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="project in (self.projects | filter: $select.search) track by project.ID" 
+                                                   refresh="self.refreshProjects($select.search)"
+                                                   refresh-delay="0">
+                                    <span ng-bind="project.Name"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
                     </div>
                 </div>
 

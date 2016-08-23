@@ -50,6 +50,11 @@
         FlashProvider.setShowClose(true);
     }
 
+    angular.module('appCore').config(nguiSelectConfig);
 
+    function nguiSelectConfig(uiSelectConfig) {
+        uiSelectConfig.theme = 'bootstrap';
+        uiSelectConfig.resetSearchInput = true;
+    }
 
 })();
