@@ -19,6 +19,7 @@
     ];
 
     angular.module('appCore', dependencies);
+    angular.module('appCore').factory('ObserverService', [ObserverService]);
     angular.module('appCore').controller('NavController', NavController);
     angular.module('appCore').controller('CreateModalInstanceController', CreateModalInstanceController);
     angular.module('appCore').controller('CreateIssueController', CreateIssueController);
@@ -28,13 +29,12 @@
 NavController.$inject = ['$scope', '$http', '$uibModal', '$log', '$window', '$compile'];
 function NavController($scope, $http, $uibModal, $log, $window, $compile) {
 
-    $scope.subcribers = [];
     $scope.toggled = function (open) {
         $log.log('Dropdown is now: ', open);
     };
 
     $scope.animationsEnabled = true;
-    $scope.open = function (size, url, callBack) {
+    $scope.open = function (size, url) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'myModalContent.html',
@@ -43,9 +43,6 @@ function NavController($scope, $http, $uibModal, $log, $window, $compile) {
             resolve: {
                 url: function () {
                     return url;
-                },
-                callBack: function () {
-                    return callBack;
                 }
             }
         });
@@ -58,10 +55,9 @@ function NavController($scope, $http, $uibModal, $log, $window, $compile) {
     };
 }
 
-CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'url', 'callBack', '$compile'];
-function CreateModalInstanceController($scope, $http, $uibModalInstance, url, callBack, $compile) {
+CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'url', '$compile'];
+function CreateModalInstanceController($scope, $http, $uibModalInstance, url, $compile) {
     $scope.url = url;
-    $scope.callBack = callBack;
     
     $http.get(url).then(function successCallback(response) {
         var element = angular.element($("#spinInModal"));
@@ -72,7 +68,6 @@ function CreateModalInstanceController($scope, $http, $uibModalInstance, url, ca
     });
 
     $scope.ok = function () {
-        $scope.callBack();
         $uibModalInstance.close($scope.url);
     };
 
@@ -81,8 +76,8 @@ function CreateModalInstanceController($scope, $http, $uibModalInstance, url, ca
     };
 }
 
-CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'valdrMessage', 'ValidationMessages', 'toastr'];
-function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, valdrMessage, ValidationMessages, toastr) {
+CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'valdrMessage', 'ValidationMessages', 'toastr', 'ObserverService'];
+function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, valdrMessage, ValidationMessages, toastr, ObserverService) {
     var self = this;
     watchWindowHeight(self, $scope, $window);
     ngLaddaService.register('POST', '/Project/CreateProject', 'createProject');
@@ -92,9 +87,7 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
     self.CreateProjectCommand = {
         name: "",
         key: ""
-    };
-
-   
+    };   
 
     self.createProject = createProject;
 
@@ -120,10 +113,13 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
             .then(function successCallback(response) {
                 $scope.ok();
                 toastr.success("Project have been created successfully.");
+                ObserverService.notify('project_created');
             }, function errorCallback(errorResponse) {
                 toastr.error("Sorry! We cannot register you for now.");
             });
     }
+
+
 
 
 }

@@ -85,6 +85,8 @@ namespace ScrumWebApp
 
                  "~/Scripts/smart-table/smart-table.js",
 
+                 "~/Scripts/angular-observer/observers.js",
+
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));
         }

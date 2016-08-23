@@ -4,8 +4,8 @@
 
     angular.module('ViewProjectModule').controller("ViewProjectController", ViewProjectController);
 
-    ViewProjectController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash', 'NotificationMessages'];
-    function ViewProjectController($scope, $http, toastr, Urls, Flash, NotificationMessages) {
+    ViewProjectController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash', 'NotificationMessages', 'ObserverService'];
+    function ViewProjectController($scope, $http, toastr, Urls, Flash, NotificationMessages, ObserverService) {
         var regex = new RegExp('/project/searchProject', 'i');
         $scope.blockPattern = regex.toString();
         var self = this;
@@ -29,12 +29,10 @@
             self.searchProject(self.tableState);
         }
 
-        $scope.$parent.subcribers.push({
-            id: 'createProject',
-            callBacks: []
-        })
-
-        $scope.$parent.subcribers[0].callBacks.push(self.globalSearch);
+        ObserverService.attach(self.globalSearch, 'project_created', 'viewProject');
+        $scope.$on('$destroy', function handler() {
+            ObserverService.detachByEvent('project_created');
+        });
     };
 })();
 

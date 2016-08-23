@@ -215,6 +215,7 @@
     <Content Include="Scripts\angular-flash\angular-flash.js" />
     <Content Include="Scripts\angular-flash\angular-flash.min.css" />
     <Content Include="Scripts\angular-flash\angular-flash.min.js" />
+    <Content Include="Scripts\angular-observer\observers.js" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.js" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.min.css" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.min.js" />

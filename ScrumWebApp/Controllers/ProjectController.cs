@@ -45,7 +45,8 @@ namespace ScrumWebApp.Controllers
 
         public JsonResult SearchProject()
         {
-            var projects = this._projectService.getAllProjects();
+            System.Threading.Thread.Sleep(3000);
+            var projects = this._projectService.getAllProjects().OrderBy(p => p.Key).ToList();
             return new JsonResult
             {
                 Data = projects,
