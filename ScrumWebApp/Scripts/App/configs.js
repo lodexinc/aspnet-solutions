@@ -23,6 +23,13 @@
             timeOut: 0,
             extendedTimeOut: 0,
             autoDismiss: false,
+            allowHtml: true,
+            iconClasses: {
+                error: 'toast-error',
+                info: 'toast-info',
+                success: 'toast-success',
+                warning: 'toast-warning'
+            },
             closeHtml: '<button>&times;</button>',
             positionClass: 'toast-bottom-full-width',
             target: 'body'

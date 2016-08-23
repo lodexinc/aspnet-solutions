@@ -148,16 +148,16 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     function issueValidationProvider() {
         return {
             'CreateIssue': {
-                'ProjectID': {
-                    'required': {
-                        'message': 'You need to select a project.'
-                    }
-                },
-                'IssueTypeID': {
-                    'required': {
-                        'message': 'You need to provide a issue type.'
-                    }
-                },
+                //'ProjectID': {
+                //    'required': {
+                //        'message': 'You need to select a project.'
+                //    }
+                //},
+                //'IssueTypeID': {
+                //    'required': {
+                //        'message': 'You need to provide a issue type.'
+                //    }
+                //},
                 'Summary': {
                     'required': {
                         'message': 'You need to enter summary.'
@@ -173,11 +173,16 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     }
 
     function createIssue() {
-        $http.post('/Issue/CreateIssue', self.CreateProjectCommand)
+        $http.post('/Issue/CreateIssue', self.CreateIssueCommand)
             .then(function successCallback(response) {
-                $scope.ok();
-                toastr.success("Issue have been created successfully.");
-                ObserverService.notify('issue_created');
+                if (response.status !== 200) {
+                    toastr.error('<div style="max-height: 400px; font-size:small; max-width: 100%; overflow: auto;">' + response.data + '</div>');
+                } else {
+                    $scope.ok();
+                    toastr.success("Issue have been created successfully.");
+                    ObserverService.notify('issue_created');
+                }
+                
             }, function errorCallback(errorResponse) {
                 toastr.error("Sorry!.");
             });
