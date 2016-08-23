@@ -11,5 +11,4 @@
         // link a httpRequest to a unique event/name
         ngLaddaService.register('GET', '/project/SearchProject', 'searchProject');
     }
-
 })();

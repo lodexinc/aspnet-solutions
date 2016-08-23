@@ -10,8 +10,9 @@
         $scope.blockPattern = regex.toString();
         var self = this;
         self.projects = [];
-        
+
         self.searchProject = function (tableState) {
+            self.tableState = tableState;
             self.isLoading = true;
             $http.get('/project/searchProject')
                 .then(function successCallback(response) {
@@ -23,7 +24,18 @@
                     toastr.error("Sorry! We cannot register you for now.");
                 });
         };
-    };    
+
+        self.globalSearch = function () {
+            self.searchProject(self.tableState);
+        }
+
+        $scope.$parent.subcribers.push({
+            id: 'createProject',
+            callBacks: []
+        })
+
+        $scope.$parent.subcribers[0].callBacks.push(self.globalSearch);
+    };
 })();
 
 

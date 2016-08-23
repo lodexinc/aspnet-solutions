@@ -26,7 +26,7 @@ namespace ScrumWebApp.Controllers
 
         public ActionResult CreateProject()
         {
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             return PartialView("_CreateProject");
         }
 
@@ -45,7 +45,6 @@ namespace ScrumWebApp.Controllers
 
         public JsonResult SearchProject()
         {
-            System.Threading.Thread.Sleep(2000);
             var projects = this._projectService.getAllProjects();
             return new JsonResult
             {
