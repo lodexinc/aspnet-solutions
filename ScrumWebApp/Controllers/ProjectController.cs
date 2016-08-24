@@ -27,7 +27,6 @@ namespace ScrumWebApp.Controllers
 
         public ActionResult CreateProject()
         {
-            System.Threading.Thread.Sleep(1000);
             return PartialView("_CreateProject");
         }
 
@@ -58,7 +57,6 @@ namespace ScrumWebApp.Controllers
         public JsonResult SearchProject(String q)
         {
             var projects = this._projectService.getAllProjects();
-            System.Threading.Thread.Sleep(2000);
             if (!String.IsNullOrEmpty(q))
             {
                 projects = projects.Where(p => p.Name.ToLower().Contains(q.ToLower())).OrderBy(p => p.Key).ToList();

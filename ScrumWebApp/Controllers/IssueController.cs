@@ -19,28 +19,24 @@ namespace ScrumWebApp.Controllers
         // GET: Issue
         public ActionResult CreateIssue()
         {
-            System.Threading.Thread.Sleep(2000);
             return PartialView("_CreateIssue");
         }
 
         [HttpPost]
         public ActionResult CreateIssue(CreateIssueCommand command)
         {
-            System.Threading.Thread.Sleep(2000);
             var response = this._issueService.CreateIssue(command);
             return Json(response);
         }
 
         public ActionResult IssueTypes()
         {
-            System.Threading.Thread.Sleep(2000);
             var response = this._issueService.GetAllIssueTypes();
             return Json(response.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Priorities()
         {
-            System.Threading.Thread.Sleep(2000);
             var response = this._issueService.GetAllPriorities();
             return Json(response.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
