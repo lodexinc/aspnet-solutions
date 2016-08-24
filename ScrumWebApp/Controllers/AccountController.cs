@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ScrumWebApp.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IRegistrationService _registrationService;
 

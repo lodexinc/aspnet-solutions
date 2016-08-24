@@ -1,4 +1,21 @@
 ﻿(function () {
+
+    angular.module('appCore').config([
+        '$httpProvider', function ($httpProvider) {
+            // Watch out! When you send requests via angular’s $http, IE could be caching and re-serving the result.
+            // Initialize get if not there
+            if (!$httpProvider.defaults.headers.get) {
+                $httpProvider.defaults.headers.get = {};
+            }
+
+            // Enables Request.IsAjaxRequest() in ASP.NET MVC
+            $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+            // Disable IE ajax request caching
+            $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
+        }
+    ]);
+
     angular.module('appCore')
         .config(function ($locationProvider) {
             $locationProvider.html5Mode({
@@ -36,7 +53,7 @@
         });
     });
 
-    angular.module('appCore').config(validationCofig);  
+    angular.module('appCore').config(validationCofig);
 
     function validationCofig(valdrProvider, valdrMessageProvider) {
         valdrMessageProvider.setTemplate('<div class="valdr-message">{{ violation.message }}</div>');

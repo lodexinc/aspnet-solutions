@@ -178,6 +178,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -349,6 +350,7 @@
     <Folder Include="Scripts\App\SignIn\Services\" />
     <Folder Include="Scripts\App\ViewProject\Directives\" />
     <Folder Include="Scripts\App\ViewProject\Services\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Issue\" />
   </ItemGroup>
   <ItemGroup>

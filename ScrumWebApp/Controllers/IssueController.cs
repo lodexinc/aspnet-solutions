@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ScrumWebApp.Controllers
 {
-    public class IssueController : Controller
+    public class IssueController : BaseController
     {
         private readonly IIssueService _issueService;
         public IssueController(IIssueService issueService)

@@ -13,7 +13,7 @@ using Infrastructure.Valication.Mvc;
 
 namespace ScrumWebApp.Controllers
 {
-    public class AuthenticationController : Controller
+    public class AuthenticationController : BaseController
     {
         private readonly IAuthenticationManager _authenticationManager;
         private readonly IAuthenticationService _authenticationService;

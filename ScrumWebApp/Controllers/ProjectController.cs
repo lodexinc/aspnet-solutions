@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace ScrumWebApp.Controllers
 {
     [Authorize]
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
         private readonly IProjectService _projectService;
 
