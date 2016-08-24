@@ -160,9 +160,11 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     self.projects = [];
 
     self.refreshProjects = function (name) {
+        self.projects = [];
         return $http.get('/project/SearchProject?name=' + name)
           .then(function (response) {
               self.projects = response.data;
+              self.isProjectLoading = false;
           });
     };
 

@@ -25,7 +25,13 @@
                                                    refresh-delay="0">
                                     <span ng-bind="project.Name"></span>
                                 </ui-select-choices>
+                                
                             </ui-select>
+                            <ui-select-no-choice>
+                                Loading...
+                            </ui-select-no-choice>
+                            
+                            <!-- Show only If product not found -->
                         </div>
 
                     </div>
