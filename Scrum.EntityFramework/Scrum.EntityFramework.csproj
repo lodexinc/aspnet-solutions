@@ -57,6 +57,7 @@
     <Compile Include="IProjectRepository.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="IssueRepository.cs" />
+    <Compile Include="IssueStatus.cs" />
     <Compile Include="IssueType.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Migrations\201608181244335_InitialCreate.cs" />
