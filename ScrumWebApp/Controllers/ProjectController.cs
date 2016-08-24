@@ -55,6 +55,12 @@ namespace ScrumWebApp.Controllers
             return Json(projects.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult ViewProject()
+        {
+            var projects = this._projectService.GetAllProjects();
+            return Json(projects, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetMembers(String q)
         {
             var projects = this._projectService.GetMembers(q);

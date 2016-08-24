@@ -14,7 +14,7 @@
         self.searchProject = function (tableState) {
             self.tableState = tableState;
             self.isLoading = true;
-            $http.get('/project/searchProject')
+            $http.get('/project/ViewProject')
                 .then(function successCallback(response) {
                     self.projects = response.data;
                     self.isLoading = false;
