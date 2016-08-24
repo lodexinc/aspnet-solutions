@@ -1,5 +1,6 @@
 ﻿using Scrum.Application;
 using Scrum.Application.Commands;
+using ScrumWebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,16 +55,16 @@ namespace ScrumWebApp.Controllers
         //    };
         //}
 
-        public JsonResult SearchProject(String name)
+        public JsonResult SearchProject(String q)
         {
             var projects = this._projectService.getAllProjects();
-            System.Threading.Thread.Sleep(3000);
-            if(!String.IsNullOrEmpty(name))
+            System.Threading.Thread.Sleep(2000);
+            if (!String.IsNullOrEmpty(q))
             {
-                projects = projects.Where(p => p.Name.ToLower().Contains(name.ToLower())).OrderBy(p => p.Key).ToList();
+                projects = projects.Where(p => p.Name.ToLower().Contains(q.ToLower())).OrderBy(p => p.Key).ToList();
             }
-             
-            return Json(projects, JsonRequestBehavior.AllowGet);
+
+            return Json(projects.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
     }
 }

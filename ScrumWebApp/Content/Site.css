@@ -21,7 +21,7 @@
     display: none;
 }
 
-    .valdr-message.ng-invalid.ng-touched.ng-dirty {
+    .valdr-message.ng-invalid.ng-dirty {
         display: inline;
         font-size: small;
         font-weight: bold;
@@ -48,3 +48,22 @@
     }
 
 
+.selectize-control.loading::before {
+    opacity: 1;
+}
+.selectize-control::before {
+    -moz-transition: opacity 0.2s;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    content: ' ';
+    z-index: 2;
+    position: absolute;
+    display: block;
+    top: 5px;
+    right: 30px;
+    width: 24px;
+    height: 24px;
+    background: url(images/spinner.gif);
+    background-size: 24px 24px;
+    opacity: 0;
+}

@@ -1,5 +1,6 @@
 ﻿using Scrum.Application;
 using Scrum.Application.Commands;
+using ScrumWebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,14 +35,14 @@ namespace ScrumWebApp.Controllers
         {
             System.Threading.Thread.Sleep(2000);
             var response = this._issueService.GetAllIssueTypes();
-            return Json(response);
+            return Json(response.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Priorities()
         {
             System.Threading.Thread.Sleep(2000);
             var response = this._issueService.GetAllPriorities();
-            return Json(response);
+            return Json(response.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
         }
     }
 }

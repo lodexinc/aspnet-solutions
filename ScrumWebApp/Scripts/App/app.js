@@ -58,7 +58,7 @@ function NavController($scope, $http, $uibModal, $log, $window, $compile) {
 CreateModalInstanceController.$inject = ['$scope', '$http', '$uibModalInstance', 'url', '$compile'];
 function CreateModalInstanceController($scope, $http, $uibModalInstance, url, $compile) {
     $scope.url = url;
-    
+
     $http.get(url).then(function successCallback(response) {
         var element = angular.element($("#spinInModal"));
         var compiledHtml = $compile(response.data)($scope);
@@ -87,7 +87,7 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
     self.CreateProjectCommand = {
         name: "",
         key: ""
-    };   
+    };
 
     self.createProject = createProject;
 
@@ -123,25 +123,36 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
 CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
 function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
 
-    $scope.user_options = function () {
-        return [
-            { id: 1, name: 'The user 1' },
-            { id: 2, name: 'The user 2' },
-            { id: 3, name: 'The user 3' }
-        ];
-    };
-
-    $scope.userConfig = {
-        persist: false,
-        selectOnTab: true,
-        labelField: 'name',
-        valueField: 'id',
-        sortField: 'name',
-        searchField: 'name'
-    };
-
-
     var self = this;
+    self.projectConfig = createSelectizeConfig('Select a project', '/project/SearchProject');
+    self.issueTypeConfig = createSelectizeConfig('Select a issue type', '/Issue/IssueTypes');
+    self.reporterConfig = createSelectizeConfig('Select a reporter', '/project/SearchProject');
+    self.priorityConfig = createSelectizeConfig('Select a priority', '/Issue/Priorities');
+    self.sprintConfig = createSelectizeConfig('Select a sprint', '/project/SearchProject');
+    self.assigneeConfig = createSelectizeConfig('Select a assignee', '/project/SearchProject');
+ 
+
+    function createSelectizeConfig(placeHolder, url) {
+        return {
+            persist: false,
+            selectOnTab: true,
+            openOnFocus: true,
+            labelField: 'Name',
+            valueField: 'Value',
+            sortField: 'Name',
+            searchField: 'Name',
+            loadingClass: 'loading',
+            placeholder: placeHolder,
+            preload: 'focus',
+            load: function (query, callback) {
+                $http.get(url, { q: query })
+                    .then(function (response) {
+                        callback(response.data);
+                    });
+            }
+        };
+    }
+
     watchWindowHeight(self, $scope, $window);
     ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
     ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
@@ -164,30 +175,19 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
 
     self.createIssue = createIssue;
 
-    self.projects = [];
-
-    self.refreshProjects = function (name) {
-        self.projects = [];
-        return $http.get('/project/SearchProject?name=' + name)
-          .then(function (response) {
-              self.projects = response.data;
-              self.isProjectLoading = false;
-          });
-    };
-
     function issueValidationProvider() {
         return {
             'CreateIssue': {
-                //'ProjectID': {
-                //    'required': {
-                //        'message': 'You need to select a project.'
-                //    }
-                //},
-                //'IssueTypeID': {
-                //    'required': {
-                //        'message': 'You need to provide a issue type.'
-                //    }
-                //},
+                'ProjectID': {
+                    'required': {
+                        'message': 'You need to select a project.'
+                    }
+                },
+                'IssueTypeID': {
+                    'required': {
+                        'message': 'You need to provide a issue type.'
+                    }
+                },
                 'Summary': {
                     'required': {
                         'message': 'You need to enter summary.'
@@ -203,7 +203,6 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     }
 
     function createIssue() {
-        self.CreateIssueCommand.ProjectID = self.ProjectSelected.ID;
         $http.post('/Issue/CreateIssue', self.CreateIssueCommand)
             .then(function successCallback(response) {
                 if (response.status !== 200) {
@@ -213,7 +212,7 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
                     toastr.success("Issue have been created successfully.");
                     ObserverService.notify('issue_created');
                 }
-                
+
             }, function errorCallback(errorResponse) {
                 toastr.error("Sorry!.");
             });

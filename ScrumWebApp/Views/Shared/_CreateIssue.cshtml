@@ -16,8 +16,11 @@
                     <label for="ProjectID" class="control-label">Project<span class="text-danger">*</span></label>
                     <div class="row">
                         <div class="col-md-6">
-                           
-                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                            <select name="ProjectID"
+                                    class="selectize-control"
+                                    selectize="self.projectSelectize"
+                                    config="self.projectConfig"
+                                    ng-model="self.CreateIssueCommand.ProjectID"></select>
                         </div>
 
                     </div>
@@ -27,8 +30,10 @@
                     <label for="IssueTypeID" class="control-label">Issue Type<span class="text-danger">*</span></label>
                     <div class="row">
                         <div class="col-md-6">
-
-                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                            <select name="IssueTypeID" class="selectize-control"
+                                    selectize="self.issueTypeSelectize"
+                                    config="self.issueTypeConfig"
+                                    ng-model="self.CreateIssueCommand.IssueTypeID"></select>
                         </div>
                     </div>
                 </div>
@@ -57,8 +62,10 @@
                     <label for="PriorityID" class="control-label">Priority</label>
                     <div class="row">
                         <div class="col-md-6">
-
-                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                            <select class="selectize-control"
+                                    selectize="self.prioritySelectize"
+                                    config="self.priorityConfig"
+                                    ng-model="self.CreateIssueCommand.PriorityID"></select>
                         </div>
                     </div>
                 </div>
@@ -74,8 +81,10 @@
                     <label for="AssigneeID" class="control-label">Assignee</label>
                     <div class="row">
                         <div class="col-md-6">
-
-                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                            <select class="selectize-control"
+                                    selectize="self.assignSelectize"
+                                    config="self.assigneeConfig"
+                                    ng-model="self.CreateIssueCommand.AssigneeID"></select>
                         </div>
 
                     </div>
@@ -86,8 +95,10 @@
                     <label for="SprintID" class="control-label">Sprint</label>
                     <div class="row">
                         <div class="col-md-6">
-
-                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                            <select class="selectize-control"
+                                    selectize="self.sprintSelectize"
+                                    config="self.sprintConfig"
+                                    ng-model="self.CreateIssueCommand.SprintID"></select>
                         </div>
                     </div>
                 </div>
