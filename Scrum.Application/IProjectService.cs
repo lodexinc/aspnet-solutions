@@ -7,6 +7,8 @@ namespace Scrum.Application
     public interface IProjectService
     {
         void CreateProject(CreateProjectCommand createProject);
-        List<Project> getAllProjects();
+        List<Project> GetAllProjects();
+
+        List<User> GetMembers(string projectId);
     }
 }

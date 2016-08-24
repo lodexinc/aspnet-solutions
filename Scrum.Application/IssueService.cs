@@ -51,7 +51,7 @@ namespace Scrum.Application
 
         private string GenerateIssueKey(Project project, IIssueRepository issueRepository)
         {
-            int maxValue = issueRepository.FindMaxKey(project.ID.ToString());
+            int maxValue = issueRepository.FindMaxKey(project.ID.ToString()) + 1;
             return String.Join("-", project.Key, maxValue);
         }
 

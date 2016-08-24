@@ -126,10 +126,10 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     var self = this;
     self.projectConfig = createSelectizeConfig('Select a project', '/project/SearchProject');
     self.issueTypeConfig = createSelectizeConfig('Select a issue type', '/Issue/IssueTypes');
-    self.reporterConfig = createSelectizeConfig('Select a reporter', '/project/SearchProject');
+    self.reporterConfig = createSelectizeConfig('Select a reporter', '/project/GetMembers');
     self.priorityConfig = createSelectizeConfig('Select a priority', '/Issue/Priorities');
     self.sprintConfig = createSelectizeConfig('Select a sprint', '/project/SearchProject');
-    self.assigneeConfig = createSelectizeConfig('Select a assignee', '/project/SearchProject');
+    self.assigneeConfig = createSelectizeConfig('Select a assignee', '/project/GetMembers');
  
 
     function createSelectizeConfig(placeHolder, url) {

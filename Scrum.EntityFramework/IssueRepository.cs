@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinqKit;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -48,7 +49,8 @@ namespace Scrum.EntityFramework
         {
             int maxKey = this._scrumDbContext.Issues
                 .Where(i => i.ProjectID.Equals(projectID, StringComparison.OrdinalIgnoreCase))
-                .Select(i => int.Parse(i.Key.Split('-')[1])).Max();
+                .AsEnumerable()
+                .Select(i => int.Parse(i.Key.Split('-')[1])).DefaultIfEmpty().Max();
             return maxKey;
         }
 

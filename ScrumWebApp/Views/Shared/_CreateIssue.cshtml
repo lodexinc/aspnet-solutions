@@ -46,8 +46,13 @@
 
                 <div class="form-group" valdr-form-group>
                     <label for="ReporterID" class="control-label">Reporter <span class="text-danger">*</span></label>
-                    <div>
-                        <input id="ReporterID" name="ReporterID" type="text" class="form-control" ng-model="self.CreateIssueCommand.ReporterID" placeholder="Enter reporter" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select name="ReporterID" class="selectize-control"
+                                    selectize="self.reporterSelectize"
+                                    config="self.reporterConfig"
+                                    ng-model="self.CreateIssueCommand.ReporterID"></select>
+                        </div>
                     </div>
                 </div>
 

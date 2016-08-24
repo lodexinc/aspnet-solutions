@@ -43,26 +43,26 @@ namespace ScrumWebApp.Controllers
             return View();
         }
 
-        //public JsonResult SearchProject()
-        //{
-        //    System.Threading.Thread.Sleep(3000);
-        //    var projects = this._projectService.getAllProjects().OrderBy(p => p.Key).ToList();
-        //    return new JsonResult
-        //    {
-        //        Data = projects,
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet
-        //    };
-        //}
 
         public JsonResult SearchProject(String q)
         {
-            var projects = this._projectService.getAllProjects();
+            var projects = this._projectService.GetAllProjects();
             if (!String.IsNullOrEmpty(q))
             {
                 projects = projects.Where(p => p.Name.ToLower().Contains(q.ToLower())).OrderBy(p => p.Key).ToList();
             }
 
             return Json(projects.Select(p => new SelectListItemModel { Name = p.Name, Value = p.ID.ToString() }), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMembers(String q)
+        {
+            var projects = this._projectService.GetMembers(q);
+            return Json(projects.Select(p => new SelectListItemModel
+            {
+                Name = String.Join(" ", p.FirsName, p.LastName),
+                Value = p.Email
+            }), JsonRequestBehavior.AllowGet);
         }
     }
 }
