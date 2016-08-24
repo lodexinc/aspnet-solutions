@@ -40,7 +40,9 @@ namespace ScrumWebApp
 
                       "~/Scripts/angular-flash/angular-flash.css",
 
-                      "~/Scripts/ng-ui-select/select.css",
+
+                      // "~/Scripts/angular-selectize/selectize/selectize.css",
+                      "~/Scripts/angular-selectize/selectize/selectize.bootstrap3.css",
 
                       "~/Scripts/textAngular/textAngular.css",
 
@@ -75,8 +77,6 @@ namespace ScrumWebApp
 
                  "~/Scripts/angular-flash/angular-flash.js",
 
-                 "~/Scripts/ng-ui-select/select.js",
-
                  "~/Scripts/textAngular/textAngular-rangy.min.js",
                  "~/Scripts/textAngular/textAngular-sanitize.js",
                  "~/Scripts/textAngular/textAngular.js",
@@ -86,6 +86,9 @@ namespace ScrumWebApp
                  "~/Scripts/smart-table/smart-table.js",
 
                  "~/Scripts/angular-observer/observers.js",
+
+                 "~/Scripts/angular-selectize/selectize/selectize.js",
+                 "~/Scripts/angular-selectize/angular-selectize.js",
 
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));

@@ -2,7 +2,6 @@
     var dependencies = [
             'ui.bootstrap',
             'ngSanitize',
-            'ui.select',            
             'ui.checkbox',
             'ngAnimate', // needed by toastr
             'valdr',
@@ -15,7 +14,8 @@
             'ngFlash',
             'ng.deviceDetector',
             'textAngular',
-            'smart-table'
+            'smart-table',
+            'selectize'
     ];
 
     angular.module('appCore', dependencies);
@@ -123,16 +123,23 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
 CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
 function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
 
+    $scope.user_options = function () {
+        return [
+            { id: 1, name: 'The user 1' },
+            { id: 2, name: 'The user 2' },
+            { id: 3, name: 'The user 3' }
+        ];
+    };
 
-    $scope.itemArray = [
-        { id: 1, name: 'first' },
-        { id: 2, name: 'second' },
-        { id: 3, name: 'third' },
-        { id: 4, name: 'fourth' },
-        { id: 5, name: 'fifth' },
-    ];
+    $scope.userConfig = {
+        persist: false,
+        selectOnTab: true,
+        labelField: 'name',
+        valueField: 'id',
+        sortField: 'name',
+        searchField: 'name'
+    };
 
-    $scope.selectedItem = $scope.itemArray[0];
 
     var self = this;
     watchWindowHeight(self, $scope, $window);

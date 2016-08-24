@@ -16,22 +16,8 @@
                     <label for="ProjectID" class="control-label">Project<span class="text-danger">*</span></label>
                     <div class="row">
                         <div class="col-md-6">
-                            <ui-select ng-model="self.ProjectSelected">
-                                <ui-select-match>
-                                    <span ng-bind="$select.selected.Name"></span>
-                                </ui-select-match>
-                                <ui-select-choices repeat="project in (self.projects | filter: $select.search) track by project.ID" 
-                                                   refresh="self.refreshProjects($select.search)"
-                                                   refresh-delay="0">
-                                    <span ng-bind="project.Name"></span>
-                                </ui-select-choices>
-                                
-                            </ui-select>
-                            <ui-select-no-choice>
-                                Loading...
-                            </ui-select-no-choice>
-                            
-                            <!-- Show only If product not found -->
+                           
+                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
                         </div>
 
                     </div>
@@ -40,13 +26,10 @@
                 <div class="form-group" valdr-form-group>
                     <label for="IssueTypeID" class="control-label">Issue Type<span class="text-danger">*</span></label>
                     <div class="row">
-                        <ui-select id="IssueTypeID" enable-valdr-validation enable-valdr-message name="IssueTypeID" class="col-md-6" ng-model="self.CreateIssueCommand.IssueTypeID" theme="bootstrap">
-                            <ui-select-match placeholder="Select or search a issue type">{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
-                                <div ng-bind-html="item.name | highlight: $select.search"></div>
-                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                            </ui-select-choices>
-                        </ui-select>
+                        <div class="col-md-6">
+
+                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group" valdr-form-group>
@@ -73,13 +56,10 @@
                 <div class="form-group">
                     <label for="PriorityID" class="control-label">Priority</label>
                     <div class="row">
-                        <ui-select name="PriorityID" class="col-md-6" ng-model="self.CreateIssueCommand.PriorityID" theme="bootstrap">
-                            <ui-select-match>{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
-                                <div ng-bind-html="item.name | highlight: $select.search"></div>
-                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                            </ui-select-choices>
-                        </ui-select>
+                        <div class="col-md-6">
+
+                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                        </div>
                     </div>
                 </div>
 
@@ -93,13 +73,10 @@
                 <div class="form-group">
                     <label for="AssigneeID" class="control-label">Assignee</label>
                     <div class="row">
-                        <ui-select name="AssigneeID" class="col-md-6" ng-model="self.CreateIssueCommand.AssigneeID" theme="bootstrap">
-                            <ui-select-match>{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
-                                <div ng-bind-html="item.name | highlight: $select.search"></div>
-                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                            </ui-select-choices>
-                        </ui-select>
+                        <div class="col-md-6">
+
+                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                        </div>
 
                     </div>
                     <a href="">Assign to me</a>
@@ -108,13 +85,10 @@
                 <div class="form-group">
                     <label for="SprintID" class="control-label">Sprint</label>
                     <div class="row">
-                        <ui-select name="SprintID" class="col-md-6" ng-model="self.CreateIssueCommand.SprintID" theme="bootstrap">
-                            <ui-select-match>{{$select.selected.name}}</ui-select-match>
-                            <ui-select-choices repeat="item in ctrl.people | filter: $select.search">
-                                <div ng-bind-html="item.name | highlight: $select.search"></div>
-                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                            </ui-select-choices>
-                        </ui-select>
+                        <div class="col-md-6">
+
+                            <select selectize="userSelectize" config="userConfig" options="user_options()" ng-model="user.id"></select>
+                        </div>
                     </div>
                 </div>
 

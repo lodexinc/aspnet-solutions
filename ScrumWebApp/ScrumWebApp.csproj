@@ -216,6 +216,13 @@
     <Content Include="Scripts\angular-flash\angular-flash.min.css" />
     <Content Include="Scripts\angular-flash\angular-flash.min.js" />
     <Content Include="Scripts\angular-observer\observers.js" />
+    <Content Include="Scripts\angular-selectize\angular-selectize.js" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.bootstrap3.css" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.css" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.default.css" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.legacy.css" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.js" />
+    <Content Include="Scripts\angular-selectize\selectize\selectize.min.js" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.js" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.min.css" />
     <Content Include="Scripts\angular-spinkit\angular-spinkit.min.js" />
@@ -281,10 +288,6 @@
     <Content Include="Scripts\ng-ladda\ladda.min.js" />
     <Content Include="Scripts\ng-ladda\ng-ladda.css" />
     <Content Include="Scripts\ng-ladda\ng-ladda.js" />
-    <Content Include="Scripts\ng-ui-select\select.css" />
-    <Content Include="Scripts\ng-ui-select\select.js" />
-    <Content Include="Scripts\ng-ui-select\select.min.css" />
-    <Content Include="Scripts\ng-ui-select\select.min.js" />
     <Content Include="Scripts\re-tree\re-tree.js" />
     <Content Include="Scripts\re-tree\re-tree.min.js" />
     <Content Include="Scripts\respond.js" />
@@ -326,8 +329,6 @@
     <Content Include="Views\Authentication\SignIn.cshtml" />
     <Content Include="Views\Shared\_HorizontalMenu.cshtml" />
     <Content Include="Views\Shared\_CreateIssue.cshtml" />
-    <Content Include="Scripts\ng-ui-select\select.min.css.map" />
-    <Content Include="Scripts\ng-ui-select\select.min.js.map" />
     <Content Include="Views\Project\_CreateProject.cshtml" />
     <Content Include="Views\Project\ViewProjects.cshtml" />
     <Content Include="Scripts\smart-table\smart-table.min.js.map" />
