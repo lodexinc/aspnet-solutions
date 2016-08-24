@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201608231000462_Add-Tables-IssueType-And-Priority.Designer.cs">
       <DependentUpon>201608231000462_Add-Tables-IssueType-And-Priority.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608241514033_Add-IssueStatus-Table.cs" />
+    <Compile Include="Migrations\201608241514033_Add-IssueStatus-Table.Designer.cs">
+      <DependentUpon>201608241514033_Add-IssueStatus-Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Project.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608231000462_Add-Tables-IssueType-And-Priority.resx">
       <DependentUpon>201608231000462_Add-Tables-IssueType-And-Priority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608241514033_Add-IssueStatus-Table.resx">
+      <DependentUpon>201608241514033_Add-IssueStatus-Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

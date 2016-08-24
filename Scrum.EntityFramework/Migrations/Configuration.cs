@@ -42,6 +42,14 @@ namespace Scrum.EntityFramework.Migrations
                 new Priority { ID = Guid.NewGuid().ToString(), Name = "High" },
                 new Priority { ID = Guid.NewGuid().ToString(), Name = "Highest" }
                 );
+            context.IssueStatuses.AddOrUpdate(
+                p => p.Name,
+                new IssueStatus { ID = Guid.NewGuid().ToString(), Name = "Todo" },
+                new IssueStatus { ID = Guid.NewGuid().ToString(), Name = "In Coding" },
+                new IssueStatus { ID = Guid.NewGuid().ToString(), Name = "In Review" },
+                new IssueStatus { ID = Guid.NewGuid().ToString(), Name = "In QA/UAT" },
+                new IssueStatus { ID = Guid.NewGuid().ToString(), Name = "Done" }
+            );
         }
     }
 }
