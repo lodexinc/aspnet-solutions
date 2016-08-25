@@ -13,7 +13,7 @@ namespace ScrumWebApp.Controllers
         {
             if (filterContext.HttpContext.Request.IsAjaxRequest())
             {
-                System.Threading.Thread.Sleep(2000);
+                // System.Threading.Thread.Sleep(1000);
             }
 
             base.OnActionExecuting(filterContext);
