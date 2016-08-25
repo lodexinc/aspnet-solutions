@@ -28,10 +28,10 @@
                 Project: <strong>{{self.ProjectDetailView.ProjectDisplayName}}</strong>
                 <div class="btn btn-success btn-xs dropdown">
                     <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="badge">
+                        <span class="badge" ng-hide="self.isLoading">
                             {{self.ProjectDetailView.TotalIssues}}
-                            <img width="16" height="16" ng-show="self.isLoading" src="~/Content/images/spinner.gif" />
-                        </span> Issue(s)
+                            
+                        </span><img width="16" height="16" ng-show="self.isLoading" src="~/Content/images/spinner.gif" /> Issue(s)
                         <span type="button" class="caret"></span>
                     </span>
                     <ul class="dropdown-menu">

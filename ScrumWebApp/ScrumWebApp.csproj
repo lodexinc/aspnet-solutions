@@ -356,7 +356,6 @@
     <Folder Include="Scripts\App\ViewProjectPlanningDetails\Services\" />
     <Folder Include="Scripts\App\ViewProject\Directives\" />
     <Folder Include="Scripts\App\ViewProject\Services\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Views\Issue\" />
   </ItemGroup>
   <ItemGroup>
