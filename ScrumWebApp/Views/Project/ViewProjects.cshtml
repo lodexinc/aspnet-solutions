@@ -16,13 +16,12 @@
     angular.bootstrap(document.getElementById("mainBody"), ['ViewProjectModule']);
 
     });
-
 }
 
 <div class="panel panel-default" ng-controller="ViewProjectController as self">
     <div class="panel-heading">
-        <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-3" style="line-height: 33px;">
+        <div class="row"  style="line-height: 31px;">
+            <div class="col-md-2 col-sm-3 col-xs-3">
                 <strong>Projects</strong>
             </div>
             <div class="col-md-10 col-sm-9 col-xs-9 text-right">
@@ -58,7 +57,7 @@
 
                         <tbody ng-show="!self.isLoading">
                             <tr ng-repeat="project in self.projects">
-                                <td>{{project.Name}}</td>
+                                <td><a href="/ProjectPlaning/ViewDetail?project={{project.ID}}">{{project.Name}}</a></td>
                                 <td>{{project.Key}}</td>
                                 <td>{{project.Lead}}</td>
                             </tr>

@@ -1,0 +1,52 @@
+﻿@model Scrum.Application.Reports.ProjectDetailView
+@using Newtonsoft.Json
+@{
+    ViewBag.Title = "Project Planning";
+    var projectNameDisplay = String.Join(" - ", Model.ProjectName, Model.ProjectKey);
+    var totalIssues = Model.IssueStatistics.Sum(i => i.Numbers);
+}
+
+@section scripts {
+    <script src="~/Scripts/App/ViewProjectPlanningDetails/project-plan.module.js"></script>
+    <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/project-plan-overview.controller.js"></script>
+}
+
+
+@section jsCode {
+    $(document).ready(function() {
+    @*$("#registerForm").attr("block-ui", "");
+        $("#registerForm").attr("block-ui-pattern", "{{blockPattern}}");*@
+    angular.bootstrap(document.getElementById("mainBody"), ['ProjectPlanModule']);
+
+    });
+}
+
+<div class="panel panel-default" ng-controller="ProjectPlanOverviewController as self" ng-init="self.init(@JsonConvert.SerializeObject(Model))">
+    <div class="panel-heading">
+        <div class="row" style="line-height: 31px;">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                Project: <strong>{{self.ProjectDetailView.ProjectDisplayName}}</strong>
+                <div class="btn btn-success btn-xs dropdown">
+                    <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="badge">
+                            {{self.ProjectDetailView.TotalIssues}}
+                            <img width="16" height="16" ng-show="self.isLoading" src="~/Content/images/spinner.gif" />
+                        </span> Issue(s)
+                        <span type="button" class="caret"></span>
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="issue in self.ProjectDetailView.IssueStatistics" class="dropdown-header">
+                            <span class="badge">{{issue.Numbers}}</span><span class="text-info text-uppercase"> {{issue.Type.Name}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+    </div>
+</div>

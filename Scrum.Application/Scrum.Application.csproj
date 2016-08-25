@@ -58,6 +58,7 @@
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationService.cs" />
+    <Compile Include="Reports\ProjectDetailView.cs" />
     <Compile Include="Responses\CreateIssueResponse.cs" />
   </ItemGroup>
   <ItemGroup>

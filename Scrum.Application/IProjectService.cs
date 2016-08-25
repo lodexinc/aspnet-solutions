@@ -1,4 +1,5 @@
 ﻿using Scrum.Application.Commands;
+using Scrum.Application.Reports;
 using Scrum.EntityFramework;
 using System.Collections.Generic;
 
@@ -10,5 +11,8 @@ namespace Scrum.Application
         List<Project> GetAllProjects();
 
         List<User> GetMembers(string projectId);
+
+        ProjectDetailView ViewProjectDetail(string id);
+        
     }
 }
