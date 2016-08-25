@@ -158,7 +158,6 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
     ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
 
-
     valdr.addConstraints(issueValidationProvider());
 
     self.CreateIssueCommand = {
@@ -210,7 +209,7 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
                 } else {
                     $scope.ok();
                     toastr.success("Issue have been created successfully.");
-                    ObserverService.notify('issue_created');
+                    ObserverService.notify('issue_created', response.data);
                 }
 
             }, function errorCallback(errorResponse) {

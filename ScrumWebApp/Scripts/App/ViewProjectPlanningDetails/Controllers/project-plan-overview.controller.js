@@ -19,23 +19,27 @@
             self.ProjectDetailView = projectDetailView;
         }
 
-        self.getProjectDetailView = function () {
-            self.isLoading = true;
-            $http.get('/ProjectPlaning/ViewDetail', { params: { project: self.ProjectDetailView.ProjectID } })
-                .then(function successCallback(response) {
-                    self.isLoading = false;
+        self.getProjectDetailView = function (callBackParams) {
+            if (callBackParams.ProjectID === self.ProjectDetailView.ProjectID) {
+                self.isLoading = true;
+                $http.get('/ProjectPlaning/ViewDetail', { params: { project: self.ProjectDetailView.ProjectID } })
+                    .then(function successCallback(response) {
+                        self.isLoading = false;
 
-                    if (response.status !== 200) {
+                        if (response.status !== 200) {
+                            toastr.error("Sorry! There is an error as we are trying to get detail for project: " + self.ProjectDetailView.ProjectName);
+                        } else {
+
+                            self.ProjectDetailView = response.data;
+                        }
+
+                    }, function errorCallback(errorResponse) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.                   
                         toastr.error("Sorry! There is an error as we are trying to get detail for project: " + self.ProjectDetailView.ProjectName);
-                    } else {
-                        self.ProjectDetailView = response.data;
-                    }
-                   
-                }, function errorCallback(errorResponse) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.                   
-                    toastr.error("Sorry! There is an error as we are trying to get detail for project: " + self.ProjectDetailView.ProjectName);
-                });
+                    });
+            }
+
         };
 
 

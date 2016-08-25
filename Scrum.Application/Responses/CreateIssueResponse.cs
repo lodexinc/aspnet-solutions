@@ -9,5 +9,6 @@ namespace Scrum.Application.Responses
     public class CreateIssueResponse
     {
         public String IssueKey { get; set; }
+        public String ProjectID { get; set; }
     }
 }

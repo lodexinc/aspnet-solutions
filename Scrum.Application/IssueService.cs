@@ -45,7 +45,8 @@ namespace Scrum.Application
 
             return new CreateIssueResponse
             {
-                IssueKey = issue.Key
+                IssueKey = issue.Key,
+                ProjectID = project.ID.ToString()
             };
         }
 
