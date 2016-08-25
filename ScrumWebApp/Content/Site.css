@@ -51,6 +51,7 @@
 .selectize-control.loading::before {
     opacity: 1;
 }
+
 .selectize-control::before {
     -moz-transition: opacity 0.2s;
     -webkit-transition: opacity 0.2s;
@@ -66,4 +67,14 @@
     background: url(images/spinner.gif);
     background-size: 24px 24px;
     opacity: 0;
+}
+
+#expandable {
+    width: 30px;
+    -webkit-transition: width 0.3s ease-in-out;
+}
+
+#expandable:focus {
+    width: 100%;
+    -webkit-transition: width 0.5s ease-in-out;
 }
