@@ -21,6 +21,66 @@
     });
 }
 
+<style type="text/css">
+    .search-form .form-group {
+        float: left !important;
+        transition: all 0.35s, border-radius 0s;
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+    }
+
+        .search-form .form-group input.form-control {
+            padding-right: 20px;
+            border: 0 none;
+            background: transparent;
+            box-shadow: none;
+            display: block;
+        }
+
+            .search-form .form-group input.form-control::-webkit-input-placeholder {
+                display: none;
+            }
+
+            .search-form .form-group input.form-control:-moz-placeholder {
+                /* Firefox 18- */
+                display: none;
+            }
+
+            .search-form .form-group input.form-control::-moz-placeholder {
+                /* Firefox 19+ */
+                display: none;
+            }
+
+            .search-form .form-group input.form-control:-ms-input-placeholder {
+                display: none;
+            }
+
+        .search-form .form-group:hover,
+        .search-form .form-group.hover {
+            width: 100%;
+            border-radius: 25px 25px 25px 25px;
+        }
+
+        .search-form .form-group span.form-control-feedback {
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            z-index: 2;
+            display: block;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: #3596e0;
+            left: initial;
+            font-size: 14px;
+        }
+</style>
+
 <div class="panel panel-default" ng-controller="ProjectPlanOverviewController as self" ng-init="self.init(@JsonConvert.SerializeObject(Model))">
     <div class="panel-heading">
         <div class="row" style="line-height: 31px;">
@@ -48,9 +108,13 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-6">
-
-                <input type="text" class="form-control" id="expandable" />
+            <div class="col-md-2">
+                <form action="" class="search-form">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control input-sm" name="search" id="search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </form>
 
             </div>
         </div>

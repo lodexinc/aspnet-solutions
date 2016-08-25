@@ -48,6 +48,13 @@
         </div>
     </form>*@
 
+    <form action="" class="navbar-form navbar-left search-form" style="margin-top: 10px;">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control input-sm" name="search" id="search">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+    </form>
+
     using (Html.BeginForm("LogOff", "Authentication", FormMethod.Post, new { id = "logoutForm" }))
     {
         <ul class="nav navbar-nav navbar-right">
