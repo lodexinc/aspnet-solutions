@@ -70,4 +70,32 @@
 
 
     </div>
+
+    <table class="table">
+        <tr>
+            <td class="text-center">
+                <img src="~/Content/images/icon-scrum.png" />
+                <h4>FILL YOUR BACKLOG WITH ISSUES</h4>
+                This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+
+                <div class="row" style="line-height: 31px;">
+                    <div class="col-md-2 col-sm-3 col-xs-3">
+                        <label class="control-label">
+                            Backlog <span class="badge" ng-hide="self.isLoading">
+                                {{self.ProjectDetailView.TotalIssues}} Issues
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-xs-9 text-right">
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject', self.globalSearch)">Create Sprint</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
