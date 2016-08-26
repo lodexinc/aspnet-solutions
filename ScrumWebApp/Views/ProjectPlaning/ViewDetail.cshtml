@@ -87,20 +87,15 @@
                             </span>
                         </label>
                     </div>
-                    <div class='containerVertical list-group'>
-                        <div class="row" ng-show="sprintCtrl.Issues.length == 0">
-                            <div class="col-md-12 text-center">
+                    <div class='containerVertical list-group' style="margin: 15px 15px 15px 15px; border: 2px dashed #ccc;">
 
-                                <div class="thumbnail">
-                                    <img height="150" width="150" src="~/Content/images/plan-sprint.svg" />
-                                    <div class="caption">
-                                        <h4>This is a sprint. Plan a sprint by dragging issues here.</h4>
-                                        
-                                    </div>
-                                </div>
+                        <div class="thumbnail" ng-show="sprintCtrl.Issues.length == 0" style="border: none;">
+                            <img height="150" width="150" src="~/Content/images/plan-sprint.svg" />
+                            <div class="caption text-center">
+                                <h4>This is a sprint. Plan a sprint by dragging issues here.</h4>
                             </div>
-
                         </div>
+
                         <div class="list-group-item" ng-repeat="issue in sprintCtrl.Issues">
                             {{issue.Key}}
                         </div>
