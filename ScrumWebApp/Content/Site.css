@@ -75,12 +75,27 @@ a:hover {
 }
 
 .btn.sharp {
-  border-radius:0;
+    border-radius: 0;
 }
+
 .btn-sm.btn-pill {
     border-radius: 20px;
 }
 
 .btn-xs.btn-pill {
     border-radius: 15px;
+}
+
+.list-group-item:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.panel.sprint {
+    border-radius: 0px;
 }

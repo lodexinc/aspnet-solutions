@@ -196,6 +196,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\icon-scrum.png" />
+    <Content Include="Content\images\plan-sprint.svg" />
     <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\loading-bar.css" />
     <Content Include="favicon.ico" />
@@ -246,6 +247,8 @@
     <Content Include="Scripts\angular-flash\angular-flash.min.js.map" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\SmartASP.pubxml" />
+    <Content Include="Scripts\App\ViewProjectPlanningDetails\Controllers\sprint.controller.js" />
+    <Content Include="Scripts\dragular\dragular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-bootstrap-checkbox.js" />
@@ -272,6 +275,10 @@
     <Content Include="Scripts\App\SignIn\sign-in.module.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dragular\dragular.css" />
+    <Content Include="Scripts\dragular\dragular.js" />
+    <Content Include="Scripts\dragular\dragular.min.css" />
+    <Content Include="Scripts\dragular\dragular.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

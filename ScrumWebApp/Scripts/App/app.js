@@ -15,7 +15,8 @@
             'ng.deviceDetector',
             'textAngular',
             'smart-table',
-            'selectize'
+            'selectize',
+            'dragularModule'
     ];
 
     angular.module('appCore', dependencies);

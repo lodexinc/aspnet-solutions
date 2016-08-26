@@ -9,6 +9,7 @@
 @section scripts {
     <script src="~/Scripts/App/ViewProjectPlanningDetails/project-plan.module.js"></script>
     <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/project-plan-overview.controller.js"></script>
+    <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/sprint.controller.js"></script>
 }
 
 
@@ -21,21 +22,21 @@
     });
 }
 
-<div class="panel panel-default" ng-controller="ProjectPlanOverviewController as self" ng-init="self.init(@JsonConvert.SerializeObject(Model))">
+<div class="panel panel-default" ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl" ng-init="projectPlanViewCtrl.init(@JsonConvert.SerializeObject(Model))">
     <div class="panel-heading">
         <div class="row" style="line-height: 31px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                Project: <strong>{{self.ProjectDetailView.ProjectDisplayName}}</strong>
+                Project: <strong>{{projectPlanViewCtrl.ProjectDetailView.ProjectDisplayName}}</strong>
                 <div class="btn btn-success btn-pill btn-sm dropdown">
                     <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="badge" ng-hide="self.isLoading">
-                            {{self.ProjectDetailView.TotalIssues}}
+                            {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}}
 
                         </span><img width="16" ng-show="self.isLoading" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
                         <span type="button" class="caret"></span>
                     </span>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="issue in self.ProjectDetailView.IssueStatistics" class="dropdown-header">
+                        <li ng-repeat="issue in projectPlanViewCtrl.ProjectDetailView.IssueStatistics" class="dropdown-header">
                             <span class="badge">{{issue.Numbers}}</span><span class="text-info text-uppercase"> {{issue.Type.Name}}</span>
                         </li>
                     </ul>
@@ -67,27 +68,56 @@
                 </form>
             </div>
         </div>
-
-
     </div>
 
     <table class="table">
         <tr>
-            <td class="text-center">
-                <img src="~/Content/images/icon-scrum.png" />
-                <h4>FILL YOUR BACKLOG WITH ISSUES</h4>
-                This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
+            <td>
+                <div class="text-center" ng-show="projectPlanViewCtrl.Sprints.length == 0">
+                    <img src="~/Content/images/icon-scrum.png" />
+                    <h4>FILL YOUR BACKLOG WITH ISSUES</h4>
+                    This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
+                </div>
+
+                <div ng-repeat="sprint in projectPlanViewCtrl.Sprints" class="panel panel-default sprint" ng-init="sprintCtrl.init(sprint)" ng-controller="SprintController as sprintCtrl">
+                    <div class="panel-heading">
+                        <label class="control-label">
+                            {{sprintCtrl.Sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                {{sprintCtrl.TotalIssues}} Issues
+                            </span>
+                        </label>
+                    </div>
+                    <div class='containerVertical list-group'>
+                        <div class="row" ng-show="sprintCtrl.Issues.length == 0">
+                            <div class="col-md-12 text-center">
+
+                                <div class="thumbnail">
+                                    <img height="150" width="150" src="~/Content/images/plan-sprint.svg" />
+                                    <div class="caption">
+                                        <h4>This is a sprint. Plan a sprint by dragging issues here.</h4>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="list-group-item" ng-repeat="issue in sprintCtrl.Issues">
+                            {{issue.Key}}
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <button type="submit" class="btn btn-primary btn-xs" ng-click="open('md', '/Issue/CreateIssue')">Create issue</button>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
-
-
                 <div class="row" style="line-height: 31px;">
                     <div class="col-md-2 col-sm-3 col-xs-3">
                         <label class="control-label">
-                            Backlog <span class="badge" ng-hide="self.isLoading">
-                                {{self.ProjectDetailView.TotalIssues}} Issues
+                            Backlog <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}} Issues
                             </span>
                         </label>
                     </div>
@@ -95,6 +125,29 @@
                         <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject', self.globalSearch)">Create Sprint</button>
                     </div>
                 </div>
+
+                <div class='containerVertical list-group'>
+                    <div class="list-group-item">
+                        Move me, but you can only drop me in one of these containers.
+
+                    </div><div class="list-group-item">
+                        Move me, but you can only drop me in one of these containers.
+
+                    </div>
+                    <div class="list-group-item">
+                        Move me, but you can only drop me in one of these containers.
+
+                    </div>
+                    <div class="list-group-item">
+                        Move me, but you can only drop me in one of these containers.
+
+                    </div>
+                    <div class="list-group-item">
+                        Move me, but you can only drop me in one of these containers.
+
+                    </div>
+                </div>
+
             </td>
         </tr>
     </table>

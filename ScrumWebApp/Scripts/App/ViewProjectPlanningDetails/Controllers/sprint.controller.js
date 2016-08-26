@@ -2,11 +2,11 @@
 (function () {
     'use strict';
 
-    angular.module('ProjectPlanModule').controller("ProjectPlanOverviewController", ProjectPlanOverviewController);
+    angular.module('ProjectPlanModule').controller("SprintController", SprintController);
 
-    ProjectPlanOverviewController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
+    SprintController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
         'NotificationMessages', 'ObserverService', 'dragularService'];
-    function ProjectPlanOverviewController($scope,
+    function SprintController($scope,
         $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService) {
 
         var regex = new RegExp('/project/searchProject', 'i');
@@ -15,28 +15,28 @@
 
         dragularService('.containerVertical');
 
-        self.ProjectDetailView = {
+        self.Sprint = {
         };
 
-        self.Sprints = [
-            {
-                SprintID: 1,
-                SprintName: "Sprint 1"
-            },
-            {
-                SprintID: 2,
-                SprintName: "Sprint 2"
-            },
-            {
-                SprintID: 3,
-                SprintName: "Sprint 3"
-            },
-        ];
+        self.Issues = [];
 
         self.init = init;
 
-        function init(projectDetailView) {
-            self.ProjectDetailView = projectDetailView;
+        function init(sprint) {
+            self.Sprint = sprint;
+            loadIssue(sprint);
+            self.TotalIssues = self.Issues.length;
+        }
+
+        function loadIssue(sprint) {
+            self.Issues = [
+                //{
+                //    Key: 'Issue 1 - ' + sprint.SprintName
+                //},
+                //{
+                //    Key: 'Issue 2 - ' + sprint.SprintName
+                //}
+            ];
         }
 
         self.getProjectDetailView = function (callBackParams) {

@@ -46,6 +46,8 @@ namespace ScrumWebApp
 
                       "~/Scripts/textAngular/textAngular.css",
 
+                      "~/Scripts/dragular/dragular.css",
+
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -89,6 +91,8 @@ namespace ScrumWebApp
 
                  "~/Scripts/angular-selectize/selectize/selectize.js",
                  "~/Scripts/angular-selectize/angular-selectize.js",
+
+                 "~/Scripts/dragular/dragular.js",
 
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));
