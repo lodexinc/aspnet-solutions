@@ -69,59 +69,18 @@
     opacity: 0;
 }
 
-.search-form {
-    float: left !important;
-    transition: all 0.35s, border-radius 0s;
-    width: 32px;
-    height: 32px;
-    background-color: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    border-radius: 25px;
-    border: 1px solid #ccc;
+
+a:hover {
+    text-decoration: none;
 }
 
-    .search-form input.form-control {
-        padding-right: 20px;
-        border: 0 none;
-        background: transparent;
-        box-shadow: none;
-        display: block;
-    }
+.btn.sharp {
+  border-radius:0;
+}
+.btn-sm.btn-pill {
+    border-radius: 20px;
+}
 
-        .search-form input.form-control::-webkit-input-placeholder {
-            display: none;
-        }
-
-        .search-form input.form-control:-moz-placeholder {
-            /* Firefox 18- */
-            display: none;
-        }
-
-        .search-form input.form-control::-moz-placeholder {
-            /* Firefox 19+ */
-            display: none;
-        }
-
-        .search-form input.form-control:-ms-input-placeholder {
-            display: none;
-        }
-
-    .search-form:hover,
-    .search-form.hover {
-        width: 100%;
-        border-radius: 25px 25px 25px 25px;
-    }
-
-    .search-form span.form-control-feedback {
-        position: absolute;
-        top: -1px;
-        right: -2px;
-        z-index: 2;
-        display: block;
-        width: 34px;
-        height: 34px;
-        text-align: center;
-        color: #3596e0;
-        left: initial;
-        font-size: 14px;
-    }
+.btn-xs.btn-pill {
+    border-radius: 15px;
+}

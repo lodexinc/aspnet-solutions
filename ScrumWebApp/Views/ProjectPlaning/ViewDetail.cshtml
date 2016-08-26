@@ -21,77 +21,17 @@
     });
 }
 
-<style type="text/css">
-    .search-form .form-group {
-        float: left !important;
-        transition: all 0.35s, border-radius 0s;
-        width: 32px;
-        height: 32px;
-        background-color: #fff;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        border-radius: 25px;
-        border: 1px solid #ccc;
-    }
-
-        .search-form .form-group input.form-control {
-            padding-right: 20px;
-            border: 0 none;
-            background: transparent;
-            box-shadow: none;
-            display: block;
-        }
-
-            .search-form .form-group input.form-control::-webkit-input-placeholder {
-                display: none;
-            }
-
-            .search-form .form-group input.form-control:-moz-placeholder {
-                /* Firefox 18- */
-                display: none;
-            }
-
-            .search-form .form-group input.form-control::-moz-placeholder {
-                /* Firefox 19+ */
-                display: none;
-            }
-
-            .search-form .form-group input.form-control:-ms-input-placeholder {
-                display: none;
-            }
-
-        .search-form .form-group:hover,
-        .search-form .form-group.hover {
-            width: 100%;
-            border-radius: 25px 25px 25px 25px;
-        }
-
-        .search-form .form-group span.form-control-feedback {
-            position: absolute;
-            top: -1px;
-            right: -2px;
-            z-index: 2;
-            display: block;
-            width: 34px;
-            height: 34px;
-            line-height: 34px;
-            text-align: center;
-            color: #3596e0;
-            left: initial;
-            font-size: 14px;
-        }
-</style>
-
 <div class="panel panel-default" ng-controller="ProjectPlanOverviewController as self" ng-init="self.init(@JsonConvert.SerializeObject(Model))">
     <div class="panel-heading">
         <div class="row" style="line-height: 31px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 Project: <strong>{{self.ProjectDetailView.ProjectDisplayName}}</strong>
-                <div class="btn btn-success btn-sm dropdown">
+                <div class="btn btn-success btn-pill btn-sm dropdown">
                     <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="badge" ng-hide="self.isLoading">
                             {{self.ProjectDetailView.TotalIssues}}
 
-                        </span><img width="16" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
+                        </span><img width="16" ng-show="self.isLoading" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
                         <span type="button" class="caret"></span>
                     </span>
                     <ul class="dropdown-menu">
@@ -100,23 +40,34 @@
                         </li>
                     </ul>
                 </div>
-
-
             </div>
-
         </div>
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-2">
-                <form action="" class="search-form">
-                    <div class="has-feedback">
-                        <input type="text" class="form-control input-sm" name="search" id="search">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            <div class="col-md-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="has-feedback">
+                            <input type="text" class="form-control input-sm" name="search" id="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left: 10px;">
+                        <label class="control-label">QUICK FILTERS:</label>
+                    </div>
+                    <div class="form-group btn-group" style="padding-left: 10px;">
+                        <button type="button" class="btn btn-default btn-sm" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                            <span class="glyphicon glyphicon-paperclip"></span> Only My Issues
+                        </button>
+                        <button type="button" class="btn btn-success btn-sm" ng-model="singleModel2" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                            Recently Updated
+                        </button>
                     </div>
                 </form>
-
             </div>
         </div>
+
+
     </div>
 </div>

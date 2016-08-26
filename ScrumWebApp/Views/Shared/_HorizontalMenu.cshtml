@@ -5,9 +5,9 @@
 
     var email = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Email);
 
-    <script type="text/ng-template" id="myModalContent.html">  
-        <cube-grid-spinner id="spinInModal"></cube-grid-spinner>      
-    </script>    
+    <script type="text/ng-template" id="myModalContent.html">
+        <cube-grid-spinner id="spinInModal"></cube-grid-spinner>
+    </script>
 
     <ul class="nav navbar-nav">
         <li uib-dropdown on-toggle="toggled(open)">
@@ -36,14 +36,6 @@
         </li>
         <li style="padding-left: 15px;">
             <button class="btn btn-default navbar-btn" role="button" ng-click="open('md', '/Issue/CreateIssue')">Create</button>
-        </li>
-        <li style="padding-left: 15px; padding-right: 15px; padding-top: 10px;">
-            <form action="" class="search-form">
-                <div class="has-feedback">
-                    <input type="text" class="form-control input-sm" name="search" id="search">
-                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-            </form>
         </li>
     </ul>
 
