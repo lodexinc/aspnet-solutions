@@ -25,6 +25,19 @@
     angular.module('appCore').controller('CreateModalInstanceController', CreateModalInstanceController);
     angular.module('appCore').controller('CreateIssueController', CreateIssueController);
     angular.module('appCore').controller('CreateProjectController', CreateProjectController);
+
+    angular.module('appCore').directive('onFinishRender', function ($timeout) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                if (scope.$last === true) {
+                    $timeout(function () {
+                        scope.$emit(attr.onFinishRender);
+                    });
+                }
+            }
+        }
+    });
 })();
 
 NavController.$inject = ['$scope', '$http', '$uibModal', '$log', '$window', '$compile'];
@@ -131,7 +144,7 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
     self.priorityConfig = createSelectizeConfig('Select a priority', '/Issue/Priorities');
     self.sprintConfig = createSelectizeConfig('Select a sprint', '/project/SearchProject');
     self.assigneeConfig = createSelectizeConfig('Select a assignee', '/project/GetMembers');
- 
+
 
     function createSelectizeConfig(placeHolder, url) {
         return {

@@ -9,7 +9,6 @@
 @section scripts {
     <script src="~/Scripts/App/ViewProjectPlanningDetails/project-plan.module.js"></script>
     <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/project-plan-overview.controller.js"></script>
-    <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/sprint.controller.js"></script>
 }
 
 
@@ -79,24 +78,20 @@
                     This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
                 </div>
 
-                <div ng-repeat="sprint in projectPlanViewCtrl.Sprints" class="panel panel-default sprint" ng-init="sprintCtrl.init(sprint)" ng-controller="SprintController as sprintCtrl">
+                <div ng-repeat="sprint in projectPlanViewCtrl.Sprints" class="panel panel-default sprint"
+                     on-finish-render="ngRepeatFinished">
+
                     <div class="panel-heading">
                         <label class="control-label">
-                            {{sprintCtrl.Sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
-                                {{sprintCtrl.TotalIssues}} Issues
+                            {{sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                {{sprint.Issues.length}} Issues
                             </span>
                         </label>
                     </div>
-                    <div class='containerVertical list-group' style="margin: 15px 15px 15px 15px; border: 2px dashed #ccc;">
 
-                        <div class="thumbnail" ng-show="sprintCtrl.Issues.length == 0" style="border: none;">
-                            <img height="150" width="150" src="~/Content/images/plan-sprint.svg" />
-                            <div class="caption text-center">
-                                <h4>This is a sprint. Plan a sprint by dragging issues here.</h4>
-                            </div>
-                        </div>
 
-                        <div class="list-group-item" ng-repeat="issue in sprintCtrl.Issues">
+                    <div id="{{sprint.SprintName}}" class='containerVertical list-group' ng-class="{'sprint-empty': sprint.Issues.length==0}">
+                        <div class="list-group-item" ng-repeat="issue in sprint.Issues">
                             {{issue.Key}}
                         </div>
                     </div>
@@ -117,7 +112,7 @@
                         </label>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-9 text-right">
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject', self.globalSearch)">Create Sprint</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject')">Create Sprint</button>
                     </div>
                 </div>
 

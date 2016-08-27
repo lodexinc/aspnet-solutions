@@ -99,3 +99,12 @@ a:hover {
 .panel.sprint {
     border-radius: 0px;
 }
+
+.sprint-empty {
+    margin: 15px 15px 15px 15px; border: 2px dashed #ccc;
+    background-image: url(images/plan-sprint.svg);
+    background-repeat:no-repeat;
+    display:block;
+    height: 150px;
+    background-position: center center;
+}

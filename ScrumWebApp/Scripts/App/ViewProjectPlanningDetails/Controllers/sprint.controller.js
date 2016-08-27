@@ -13,7 +13,6 @@
         $scope.blockPattern = regex.toString();
         var self = this;
 
-        dragularService('.containerVertical');
 
         self.Sprint = {
         };
@@ -30,14 +29,16 @@
 
         function loadIssue(sprint) {
             self.Issues = [
-                //{
-                //    Key: 'Issue 1 - ' + sprint.SprintName
-                //},
-                //{
-                //    Key: 'Issue 2 - ' + sprint.SprintName
-                //}
+                {
+                    Key: 'Issue 1 - ' + sprint.SprintName
+                },
+                {
+                    Key: 'Issue 2 - ' + sprint.SprintName
+                }
             ];
         }
+
+        
 
         self.getProjectDetailView = function (callBackParams) {
             if (callBackParams.ProjectID === self.ProjectDetailView.ProjectID) {

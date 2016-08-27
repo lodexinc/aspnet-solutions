@@ -12,28 +12,68 @@
         var regex = new RegExp('/project/searchProject', 'i');
         $scope.blockPattern = regex.toString();
         var self = this;
-
-        dragularService('.containerVertical');
-
         self.ProjectDetailView = {
         };
 
         self.Sprints = [
             {
                 SprintID: 1,
-                SprintName: "Sprint 1"
+                SprintName: "Sprint_1",
+                Issues: [
+                {
+                    Key: 'Issue 1 - ' + "Sprint_1"
+                },
+                {
+                    Key: 'Issue 2 - ' + "Sprint_1"
+                }
+                ]
             },
             {
                 SprintID: 2,
-                SprintName: "Sprint 2"
+                SprintName: "Sprint_2",
+                Issues: [
+                {
+                    Key: 'Issue 1 - ' + "Sprint_2"
+                },
+                {
+                    Key: 'Issue 2 - ' + "Sprint_2"
+                }
+                ]
             },
             {
                 SprintID: 3,
-                SprintName: "Sprint 3"
+                SprintName: "Sprint_3",
+                Issues: [
+                {
+                    Key: 'Issue 1 - ' + "Sprint_3"
+                },
+                {
+                    Key: 'Issue 2 - ' + "Sprint_3"
+                }
+                ]
             },
         ];
 
         self.init = init;
+
+        $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+            var container1 = document.querySelector('#Sprint_1'),
+                container2 = document.querySelector('#Sprint_2'),
+                container3 = document.querySelector('#Sprint_3');
+            dragularService([container1], {
+                containersModel: [self.Sprints[0].Issues]
+            });
+
+            dragularService([container2], {
+                containersModel: [self.Sprints[1].Issues]
+            });
+
+            dragularService([container3], {
+                containersModel: [self.Sprints[2].Issues]
+            });
+        });
+
+
 
         function init(projectDetailView) {
             self.ProjectDetailView = projectDetailView;
