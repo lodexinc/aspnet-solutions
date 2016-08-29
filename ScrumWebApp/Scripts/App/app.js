@@ -3,6 +3,7 @@
             'ui.bootstrap',
             'ngSanitize',
             'ui.checkbox',
+            'ui.router',
             'ngAnimate', // needed by toastr
             'valdr',
             'blockUI',
@@ -16,7 +17,9 @@
             'textAngular',
             'smart-table',
             'selectize',
-            'dragularModule'
+            'dragularModule',
+            'pascalprecht.translate',
+            'eehNavigation'
     ];
 
     angular.module('appCore', dependencies);

@@ -21,124 +21,169 @@
     });
 }
 
-<div class="panel panel-default" ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl" ng-init="projectPlanViewCtrl.init(@JsonConvert.SerializeObject(Model))">
-    <div class="panel-heading">
-        <div class="row" style="line-height: 31px;">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                Project: <strong>{{projectPlanViewCtrl.ProjectDetailView.ProjectDisplayName}}</strong>
-                <div class="btn btn-success btn-pill btn-sm dropdown">
-                    <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="badge" ng-hide="self.isLoading">
-                            {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}}
+<style type="text/css">
+    #eeh-navigation-page-wrapper {
+        padding: 0 0px;
+        border-left: none;
+    }
 
-                        </span><img width="16" ng-show="self.isLoading" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
-                        <span type="button" class="caret"></span>
-                    </span>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="issue in projectPlanViewCtrl.ProjectDetailView.IssueStatistics" class="dropdown-header">
-                            <span class="badge">{{issue.Numbers}}</span><span class="text-info text-uppercase"> {{issue.Type.Name}}</span>
-                        </li>
-                    </ul>
+
+
+    .side-bar-default {
+        background-color: #f5f5f5;
+        border-bottom: none;
+        margin-top: -5px;
+    }
+
+    #eeh-navigation-page-wrapper .panel {
+        border-radius: 0px;
+        margin-top: -5px;
+    }
+
+    .main-panel {
+        border-top: none;
+    }
+
+    #eeh-navigation-page-wrapper .main-panel {
+        border-radius: 0px;
+    }
+</style>
+
+<eeh-navigation-sidebar menu-name="'myMenu'"
+                        search-input-is-visible="false"
+                        sidebar-collapsed-icon-class="'glyphicon-chevron-right'"
+                        sidebar-expanded-icon-class="'glyphicon-chevron-left'"
+                        nav-class="'side-bar-default'">
+
+    <div class="panel panel-default main-panel"
+         ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl"
+         ng-init="projectPlanViewCtrl.init(@JsonConvert.SerializeObject(Model))">
+
+        <div class="panel-heading">
+            <div class="row" style="line-height: 31px;">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    Project: <strong>{{projectPlanViewCtrl.ProjectDetailView.ProjectDisplayName}}</strong>
+                    <div class="btn btn-success btn-pill btn-sm dropdown">
+                        <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="badge" ng-hide="self.isLoading">
+                                {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}}
+
+                            </span><img width="16" ng-show="self.isLoading" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
+                            <span type="button" class="caret"></span>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="issue in projectPlanViewCtrl.ProjectDetailView.IssueStatistics" class="dropdown-header">
+                                <span class="badge">{{issue.Numbers}}</span><span class="text-info text-uppercase"> {{issue.Type.Name}}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" name="search" id="search">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="has-feedback">
+                                            <input type="text" class="form-control input-sm" name="search" id="search">
+                                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="padding-left: 10px;">
+                                        <label class="control-label">QUICK FILTERS:</label>
+                                    </div>
+                                    <div class="form-group btn-group" style="padding-left: 10px;">
+                                        <button type="button" class="btn btn-default btn-sm" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                                            <span class="glyphicon glyphicon-paperclip"></span> Only My Issues
+                                        </button>
+                                        <button type="button" class="btn btn-success btn-sm" ng-model="singleModel2" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                                            Recently Updated
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group" style="padding-left: 10px;">
-                        <label class="control-label">QUICK FILTERS:</label>
-                    </div>
-                    <div class="form-group btn-group" style="padding-left: 10px;">
-                        <button type="button" class="btn btn-default btn-sm" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
-                            <span class="glyphicon glyphicon-paperclip"></span> Only My Issues
-                        </button>
-                        <button type="button" class="btn btn-success btn-sm" ng-model="singleModel2" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
-                            Recently Updated
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <table class="table">
-        <tr>
-            <td>
-                <div class="text-center" ng-show="projectPlanViewCtrl.Sprints.length == 0">
-                    <img src="~/Content/images/icon-scrum.png" />
-                    <h4>FILL YOUR BACKLOG WITH ISSUES</h4>
-                    This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
-                </div>
-
-                <div ng-repeat="sprint in projectPlanViewCtrl.Sprints" class="panel panel-default sprint"
-                     on-finish-render="ngRepeatFinished">
-
-                    <div class="panel-heading">
-                        <label class="control-label">
-                            {{sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
-                                {{sprint.Issues.length}} Issues
-                            </span>
-                        </label>
-                    </div>
-
-
-                    <div id="{{sprint.SprintName}}" class='containerVertical list-group' ng-class="{'sprint-empty': sprint.Issues.length==0}">
-                        <div class="list-group-item" ng-repeat="issue in sprint.Issues">
-                            {{issue.Key}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="text-center" ng-show="projectPlanViewCtrl.Sprints.length == 0">
+                            <img src="~/Content/images/icon-scrum.png" />
+                            <h4>FILL YOUR BACKLOG WITH ISSUES</h4>
+                            This is your team backlog. Create and estimate new issues, and prioritize the backlog using drag and drop.
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <button type="submit" class="btn btn-primary btn-xs" ng-click="open('md', '/Issue/CreateIssue')">Create issue</button>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="row" style="line-height: 31px;">
-                    <div class="col-md-2 col-sm-3 col-xs-3">
-                        <label class="control-label">
-                            Backlog <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
-                                {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}} Issues
-                            </span>
-                        </label>
-                    </div>
-                    <div class="col-md-10 col-sm-9 col-xs-9 text-right">
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject')">Create Sprint</button>
-                    </div>
-                </div>
 
-                <div class='containerVertical list-group'>
-                    <div class="list-group-item">
-                        Move me, but you can only drop me in one of these containers.
+                        <div ng-repeat="sprint in projectPlanViewCtrl.Sprints" class="panel panel-default sprint"
+                             on-finish-render="ngRepeatFinished">
 
-                    </div><div class="list-group-item">
-                        Move me, but you can only drop me in one of these containers.
+                            <div class="panel-heading">
+                                <label class="control-label">
+                                    {{sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                        {{sprint.Issues.length}} Issues
+                                    </span>
+                                </label>
+                            </div>
 
-                    </div>
-                    <div class="list-group-item">
-                        Move me, but you can only drop me in one of these containers.
 
-                    </div>
-                    <div class="list-group-item">
-                        Move me, but you can only drop me in one of these containers.
+                            <div id="{{sprint.SprintName}}" class='containerVertical list-group' ng-class="{'sprint-empty': sprint.Issues.length==0}">
+                                <div class="list-group-item" ng-repeat="issue in sprint.Issues">
+                                    {{issue.Key}}
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <button type="submit" class="btn btn-primary btn-xs" ng-click="open('md', '/Issue/CreateIssue')">Create issue</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row" style="line-height: 31px;">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
+                                <label class="control-label">
+                                    Backlog <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                        {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}} Issues
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-9 text-right">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject')">Create Sprint</button>
+                            </div>
+                        </div>
 
-                    </div>
-                    <div class="list-group-item">
-                        Move me, but you can only drop me in one of these containers.
+                        <div class='containerVertical list-group'>
+                            <div class="list-group-item">
+                                Move me, but you can only drop me in one of these containers.
 
-                    </div>
-                </div>
+                            </div><div class="list-group-item">
+                                Move me, but you can only drop me in one of these containers.
 
-            </td>
-        </tr>
-    </table>
-</div>
+                            </div>
+                            <div class="list-group-item">
+                                Move me, but you can only drop me in one of these containers.
+
+                            </div>
+                            <div class="list-group-item">
+                                Move me, but you can only drop me in one of these containers.
+
+                            </div>
+                            <div class="list-group-item">
+                                Move me, but you can only drop me in one of these containers.
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</eeh-navigation-sidebar>
+

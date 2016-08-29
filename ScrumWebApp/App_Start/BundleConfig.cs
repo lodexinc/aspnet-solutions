@@ -48,6 +48,9 @@ namespace ScrumWebApp
 
                       "~/Scripts/dragular/dragular.css",
 
+                      "~/Scripts/eeh-navigation/eeh-navigation.css",
+
+
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -57,6 +60,7 @@ namespace ScrumWebApp
                 "~/Scripts/angular/angular-route.js",
                 "~/Scripts/angular/angular-bootstrap-checkbox.js",
                 "~/Scripts/ui-router/angular-ui-router.js",
+                "~/Scripts/angular-translate/angular-translate.js",
                 "~/Scripts/ui-bootstrap/ui-bootstrap-tpls-2.0.1.js",
                 "~/Scripts/loading-bar.js",
                 "~/Scripts/valdr/valdr.js",
@@ -93,6 +97,13 @@ namespace ScrumWebApp
                  "~/Scripts/angular-selectize/angular-selectize.js",
 
                  "~/Scripts/dragular/dragular.js",
+
+                 "~/Scripts/ng-pageslide/angular-pageslide.js",
+
+                 "~/Scripts/eeh-navigation/eeh-navigation.js",
+                 "~/Scripts/eeh-navigation/eeh-navigation.tpl.js",
+
+
 
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));

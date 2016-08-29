@@ -5,13 +5,35 @@
     angular.module('ProjectPlanModule').controller("ProjectPlanOverviewController", ProjectPlanOverviewController);
 
     ProjectPlanOverviewController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
-        'NotificationMessages', 'ObserverService', 'dragularService'];
+        'NotificationMessages', 'ObserverService', 'dragularService', 'eehNavigation'];
     function ProjectPlanOverviewController($scope,
-        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService) {
+        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService, eehNavigation) {
 
         var regex = new RegExp('/project/searchProject', 'i');
         $scope.blockPattern = regex.toString();
         var self = this;
+
+        eehNavigation
+          .menuItem('myMenu.backlog', {
+              text: 'Backlog',
+              iconClass: 'glyphicon-equalizer',
+              weight: -10,
+              href: '#'
+          })
+          .menuItem('myMenu.issues', {
+              text: 'Issues',
+              iconClass: 'glyphicon-tasks',
+              weight: -8,
+              href: '#'
+          })
+          .menuItem('myMenu.projectSettings', {
+              text: 'Project Settings',
+              iconClass: 'glyphicon-cog',
+              weight: -6,
+              href: '#'
+          });
+
+
         self.ProjectDetailView = {
         };
 

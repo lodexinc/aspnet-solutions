@@ -238,6 +238,8 @@
     <Content Include="Scripts\angular-toastr\angular-toastr.theme.css" />
     <Content Include="Scripts\angular-toastr\angular-toastr.tpls.js" />
     <Content Include="Scripts\angular-toastr\angular-toastr.tpls.min.js" />
+    <Content Include="Scripts\angular-translate\angular-translate.js" />
+    <Content Include="Scripts\angular-translate\angular-translate.min.js" />
     <Content Include="Scripts\angular\angular-sanitize.js" />
     <Content Include="Scripts\angular\angular.min.js.map" />
     <Content Include="Scripts\angular-block-ui\angular-block-ui.css.map" />
@@ -249,6 +251,9 @@
     <None Include="Properties\PublishProfiles\SmartASP.pubxml" />
     <Content Include="Scripts\App\ViewProjectPlanningDetails\Controllers\sprint.controller.js" />
     <Content Include="Scripts\dragular\dragular.min.js.map" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.css.map" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.min.js.map" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-bootstrap-checkbox.js" />
@@ -279,6 +284,11 @@
     <Content Include="Scripts\dragular\dragular.js" />
     <Content Include="Scripts\dragular\dragular.min.css" />
     <Content Include="Scripts\dragular\dragular.min.js" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.css" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.js" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.min.js" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.js" />
+    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -301,6 +311,8 @@
     <Content Include="Scripts\ng-ladda\ladda.min.js" />
     <Content Include="Scripts\ng-ladda\ng-ladda.css" />
     <Content Include="Scripts\ng-ladda\ng-ladda.js" />
+    <Content Include="Scripts\ng-pageslide\angular-pageslide.js" />
+    <Content Include="Scripts\ng-pageslide\angular-pageslide.min.js" />
     <Content Include="Scripts\re-tree\re-tree.js" />
     <Content Include="Scripts\re-tree\re-tree.min.js" />
     <Content Include="Scripts\respond.js" />
