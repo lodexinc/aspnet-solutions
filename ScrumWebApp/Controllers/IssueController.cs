@@ -29,6 +29,11 @@ namespace ScrumWebApp.Controllers
             return Json(response);
         }
 
+        public ActionResult SearchIssue()
+        {
+            return View();
+        }
+
         public ActionResult IssueTypes()
         {
             var response = this._issueService.GetAllIssueTypes();

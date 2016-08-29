@@ -1,9 +1,7 @@
 ﻿@model Scrum.Application.Reports.ProjectDetailView
 @using Newtonsoft.Json
 @{
-    ViewBag.Title = "Project Planning";
-    var projectNameDisplay = String.Join(" - ", Model.ProjectName, Model.ProjectKey);
-    var totalIssues = Model.IssueStatistics.Sum(i => i.Numbers);
+    ViewBag.Title = "Search for issues";
 }
 
 @section scripts {
@@ -21,39 +19,17 @@
     });
 }
 
-<div id="projectPlanDetail" class="panel panel-default main-panel"
-     ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl"
-     ng-init="projectPlanViewCtrl.init(@JsonConvert.SerializeObject(Model))">
+<style type="text/css">
+
+</style>
+
+<div class="panel panel-default main-panel"
+     ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl">
 
     <div class="panel-heading">
         <div class="row" style="line-height: 31px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-default btn-xs" href="" ng-click="toggle()"><span class="glyphicon glyphicon-list"></span></button>
-                <div pageslide ps-open="checked"
-                     ps-side="left"
-                     ps-container="mainContent">
-
-                    <div style="padding:20px" id="demo-right">
-                        <h2>Hello Pageslide</h2>
-                        <p>Put here whatever you want</p>
-                        <a ng-click="toggle()" class="button">Close</a>
-                    </div>
-                </div>
-                Project: <strong>{{projectPlanViewCtrl.ProjectDetailView.ProjectDisplayName}}</strong>
-                <div class="btn btn-success btn-pill btn-sm dropdown">
-                    <span type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="badge" ng-hide="self.isLoading">
-                            {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}}
-
-                        </span><img width="16" ng-show="self.isLoading" height="16" src="~/Content/images/spinner.gif" /> Issue(s)
-                        <span type="button" class="caret"></span>
-                    </span>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="issue in projectPlanViewCtrl.ProjectDetailView.IssueStatistics" class="dropdown-header">
-                            <span class="badge">{{issue.Numbers}}</span><span class="text-info text-uppercase"> {{issue.Type.Name}}</span>
-                        </li>
-                    </ul>
-                </div>
+                <strong>Search</strong>
             </div>
         </div>
     </div>
@@ -61,7 +37,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="container">
+                <td>
                     <div class="row">
                         <div class="col-md-12">
                             <form class="form-inline">
@@ -99,31 +75,11 @@
                          on-finish-render="ngRepeatFinished">
 
                         <div class="panel-heading">
-                            <div class="row" style="line-height: 31px;">
-                                <div class="col-md-2 col-sm-3 col-xs-3">
-                                    {{sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
-                                        {{sprint.Issues.length}} Issues
-                                    </span>
-                                </div>
-                                <div class="col-md-10 col-sm-9 col-xs-9 text-right ">
-                                    <div class="dropdown">
-                                        <span type="button" class="btn btn-default btn-xs dropdown-toggle" 
-                                              data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
-                                            <span class="glyphicon glyphicon-option-vertical"></span>
-                                        </span>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="">Edit Sprint</a>
-                                                <a href="">Delete Sprint</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                             <label class="control-label">
-
+                                {{sprint.SprintName}} <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
+                                    {{sprint.Issues.length}} Issues
+                                </span>
                             </label>
-
                         </div>
 
 
@@ -139,7 +95,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="container">
+                <td>
                     <div class="row" style="line-height: 31px;">
                         <div class="col-md-2 col-sm-3 col-xs-3">
                             <label class="control-label">
@@ -180,7 +136,6 @@
         </tbody>
 
     </table>
-
 
 </div>
 

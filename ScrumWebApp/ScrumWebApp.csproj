@@ -251,9 +251,6 @@
     <None Include="Properties\PublishProfiles\SmartASP.pubxml" />
     <Content Include="Scripts\App\ViewProjectPlanningDetails\Controllers\sprint.controller.js" />
     <Content Include="Scripts\dragular\dragular.min.js.map" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.css.map" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.min.js.map" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-bootstrap-checkbox.js" />
@@ -284,11 +281,6 @@
     <Content Include="Scripts\dragular\dragular.js" />
     <Content Include="Scripts\dragular\dragular.min.css" />
     <Content Include="Scripts\dragular\dragular.min.js" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.css" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.js" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.min.js" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.js" />
-    <Content Include="Scripts\eeh-navigation\eeh-navigation.tpl.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -331,7 +323,6 @@
     <Content Include="Scripts\textAngular\textAngular.umd.js" />
     <Content Include="Scripts\textAngular\textAngularSetup.js" />
     <Content Include="Scripts\ui-bootstrap\ui-bootstrap-tpls-2.0.1.js" />
-    <Content Include="Scripts\ui-router\angular-ui-router.js" />
     <Content Include="Scripts\valdr\valdr-message.js" />
     <Content Include="Scripts\valdr\valdr.js" />
     <Content Include="Scripts\_references.js" />
@@ -358,6 +349,7 @@
     <Content Include="Views\Project\ViewProjects.cshtml" />
     <Content Include="Scripts\smart-table\smart-table.min.js.map" />
     <Content Include="Views\ProjectPlaning\ViewDetail.cshtml" />
+    <Content Include="Views\Issue\SearchIssue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,7 +367,6 @@
     <Folder Include="Scripts\App\ViewProjectPlanningDetails\Services\" />
     <Folder Include="Scripts\App\ViewProject\Directives\" />
     <Folder Include="Scripts\App\ViewProject\Services\" />
-    <Folder Include="Views\Issue\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

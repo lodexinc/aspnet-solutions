@@ -5,34 +5,17 @@
     angular.module('ProjectPlanModule').controller("ProjectPlanOverviewController", ProjectPlanOverviewController);
 
     ProjectPlanOverviewController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
-        'NotificationMessages', 'ObserverService', 'dragularService', 'eehNavigation'];
+        'NotificationMessages', 'ObserverService', 'dragularService'];
     function ProjectPlanOverviewController($scope,
-        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService, eehNavigation) {
+        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService) {
 
         var regex = new RegExp('/project/searchProject', 'i');
         $scope.blockPattern = regex.toString();
         var self = this;
-
-        eehNavigation
-          .menuItem('myMenu.backlog', {
-              text: 'Backlog',
-              iconClass: 'glyphicon-equalizer',
-              weight: -10,
-              href: '#'
-          })
-          .menuItem('myMenu.issues', {
-              text: 'Issues',
-              iconClass: 'glyphicon-tasks',
-              weight: -8,
-              href: '#'
-          })
-          .menuItem('myMenu.projectSettings', {
-              text: 'Project Settings',
-              iconClass: 'glyphicon-cog',
-              weight: -6,
-              href: '#'
-          });
-
+        $scope.checked = false;
+        $scope.toggle = function () {
+            $scope.checked = !$scope.checked
+        }
 
         self.ProjectDetailView = {
         };
@@ -47,8 +30,7 @@
                 },
                 {
                     Key: 'Issue 2 - ' + "Sprint_1"
-                }
-                ]
+                }]
             },
             {
                 SprintID: 2,
@@ -59,8 +41,7 @@
                 },
                 {
                     Key: 'Issue 2 - ' + "Sprint_2"
-                }
-                ]
+                }]
             },
             {
                 SprintID: 3,
@@ -71,8 +52,7 @@
                 },
                 {
                     Key: 'Issue 2 - ' + "Sprint_3"
-                }
-                ]
+                }]
             },
         ];
 
