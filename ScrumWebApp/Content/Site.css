@@ -155,3 +155,37 @@ body.ng-pageslide-body-closed::before {
     opacity: 0;
     pointer-events: none;
 }
+
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+}
+
+    .nav-sidebar > li > a {
+        padding-right: 10px;
+        padding-left: 10px;
+        color: black;
+    }
+
+    .nav-sidebar > li > a:hover {
+        padding-right: 10px;
+        padding-left: 10px;
+        color: white;
+        background-color: #aea79f;
+    }
+
+    .nav-sidebar > .active > a {
+        color: #fff;
+        background-color: #aea79f;
+    }
+
+/*
+ * Main content
+ */
+

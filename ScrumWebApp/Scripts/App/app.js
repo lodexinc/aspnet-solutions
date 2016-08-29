@@ -18,7 +18,8 @@
             'selectize',
             'dragularModule',
             'pascalprecht.translate',
-            'pageslide-directive'
+            'pageslide-directive',
+            'ui.bootstrap.contextMenu'
     ];
 
     angular.module('appCore', dependencies);

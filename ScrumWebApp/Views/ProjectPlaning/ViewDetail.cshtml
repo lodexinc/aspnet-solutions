@@ -31,12 +31,27 @@
                 <button class="btn btn-default btn-xs" href="" ng-click="toggle()"><span class="glyphicon glyphicon-list"></span></button>
                 <div pageslide ps-open="checked"
                      ps-side="left"
+                     ps-size="150px"
                      ps-container="mainContent">
 
-                    <div style="padding:20px" id="demo-right">
-                        <h2>Hello Pageslide</h2>
-                        <p>Put here whatever you want</p>
-                        <a ng-click="toggle()" class="button">Close</a>
+                    <div id="demo-right">
+                        <div class="row row-offcanvas row-offcanvas-left">
+
+                            <div class="col-md-12 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                                <ul class="nav nav-sidebar">
+                                    <li class="active"><a href="#"><span class="glyphicon glyphicon-th-list"></span> Backlog</a></li>
+                                    <li><a href="" target="_ext"><span class="glyphicon glyphicon-tasks"></span> Issues</a></li>
+
+                                    <li class="nav-divider"></li>
+                                    <li><a href="" target="_ext"><span class="glyphicon glyphicon-cog"></span> Project Settings</a></li>
+                                    <li class="nav-divider"></li>
+                                    <li><a href="" ng-click="toggle()" class="button"><span class="glyphicon glyphicon-remove-circle"></span> Close</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 Project: <strong>{{projectPlanViewCtrl.ProjectDetailView.ProjectDisplayName}}</strong>
@@ -106,14 +121,14 @@
                                     </span>
                                 </div>
                                 <div class="col-md-10 col-sm-9 col-xs-9 text-right">
-                                    <div class="dropdown btn btn-default btn-xs"  >
-                                        <span href="#" class="dropdown-toggle" 
-                                           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <div class="dropdown btn btn-default btn-xs">
+                                        <span href="#" class="dropdown-toggle"
+                                              data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                             <span class="glyphicon glyphicon-option-vertical"></span>
                                         </span>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li class="dropdown-header text-uppercase"><strong>{{sprint.SprintName}}</strong></li>
-                                            <li><a href="#">Edit Sprint</a></li>
+                                            <li><a href="" ng-click="open('md', '/Project/CreateProject')">Edit Sprint</a></li>
                                             <li><a href="#">Delete Sprint</a></li>
                                         </ul>
                                     </div>
@@ -123,7 +138,7 @@
 
 
                         <div id="{{sprint.SprintName}}" class='containerVertical list-group' ng-class="{'sprint-empty': sprint.Issues.length==0}">
-                            <div class="list-group-item" ng-repeat="issue in sprint.Issues">
+                            <div class="list-group-item" ng-repeat="issue in sprint.Issues" context-menu="menuOptions">
                                 {{issue.Key}}
                             </div>
                         </div>

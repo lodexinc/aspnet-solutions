@@ -96,6 +96,8 @@ namespace ScrumWebApp
 
                  "~/Scripts/ng-pageslide/angular-pageslide.js",
 
+                 "~/Scripts/ui-bootstrap-contextMenu/contextMenu.js", 
+
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));
         }

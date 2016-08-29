@@ -322,6 +322,7 @@
     <Content Include="Scripts\textAngular\textAngular.min.js" />
     <Content Include="Scripts\textAngular\textAngular.umd.js" />
     <Content Include="Scripts\textAngular\textAngularSetup.js" />
+    <Content Include="Scripts\ui-bootstrap-contextMenu\contextMenu.js" />
     <Content Include="Scripts\ui-bootstrap\ui-bootstrap-tpls-2.0.1.js" />
     <Content Include="Scripts\valdr\valdr-message.js" />
     <Content Include="Scripts\valdr\valdr.js" />
