@@ -105,25 +105,20 @@
                                         {{sprint.Issues.length}} Issues
                                     </span>
                                 </div>
-                                <div class="col-md-10 col-sm-9 col-xs-9 text-right ">
-                                    <div class="dropdown">
-                                        <span type="button" class="btn btn-default btn-xs dropdown-toggle" 
-                                              data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
+                                <div class="col-md-10 col-sm-9 col-xs-9 text-right">
+                                    <div class="dropdown btn btn-default btn-xs"  >
+                                        <span href="#" class="dropdown-toggle" 
+                                           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                             <span class="glyphicon glyphicon-option-vertical"></span>
                                         </span>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="">Edit Sprint</a>
-                                                <a href="">Delete Sprint</a>
-                                            </li>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header text-uppercase"><strong>{{sprint.SprintName}}</strong></li>
+                                            <li><a href="#">Edit Sprint</a></li>
+                                            <li><a href="#">Delete Sprint</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label">
-
-                            </label>
-
                         </div>
 
 
