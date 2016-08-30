@@ -141,11 +141,34 @@ CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService',
 function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
 
     var self = this;
+    watchWindowHeight(self, $scope, $window);
+    ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
+    ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
+    ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
+
+    valdr.addConstraints(issueValidationProvider());
+
+    self.CreateIssueCommand = {
+        ProjectID: "",
+        IssueTypeID: "",
+        Summary: "",
+        ReporterID: "",
+        Description: "",
+        PriorityID: "",
+        Attachment: "",
+        AssigneeID: "",
+        SprintID: ""
+    };
+
+    self.createIssue = createIssue;
     self.projectConfig = createSelectizeConfig('Select a project', '/project/SearchProject');
+    
     self.issueTypeConfig = createSelectizeConfig('Select a issue type', '/Issue/IssueTypes');
     self.reporterConfig = createSelectizeConfig('Select a reporter', '/project/GetMembers');
     self.priorityConfig = createSelectizeConfig('Select a priority', '/Issue/Priorities');
-    self.sprintConfig = createSelectizeConfig('Select a sprint', '/project/SearchProject');
+    self.sprintConfig = createSelectizeConfig('Select a sprint', '/ProjectPlanning/SprintOfProject?project=' + self.CreateIssueCommand.ProjectID);
+    self.sprintConfig.valueField = "ID";
+
     self.assigneeConfig = createSelectizeConfig('Select a assignee', '/project/GetMembers');
 
 
@@ -170,26 +193,7 @@ function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, val
         };
     }
 
-    watchWindowHeight(self, $scope, $window);
-    ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
-    ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
-    ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
-
-    valdr.addConstraints(issueValidationProvider());
-
-    self.CreateIssueCommand = {
-        ProjectID: "",
-        IssueTypeID: "",
-        Summary: "",
-        ReporterID: "",
-        Description: "",
-        PriorityID: "",
-        Attachment: "",
-        AssigneeID: "",
-        SprintID: ""
-    };
-
-    self.createIssue = createIssue;
+    
 
     function issueValidationProvider() {
         return {

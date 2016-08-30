@@ -1,0 +1,33 @@
+﻿@model Scrum.Application.Commands.Pet
+@using Newtonsoft.Json
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+    <script src="~/Scripts/App/Pet/pet.module.js"></script>
+    <script src="~/Scripts/App/Pet/Controllers/pet.controller.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            angular.bootstrap(document.getElementById("mainBody"), ['PetModule']);
+
+        });
+    </script>
+}
+<h2>Index</h2>
+
+<label>@Model.Name</label>
+<div ng-controller="PetController as self" ng-init="self.init(@JsonConvert.SerializeObject(Model))">
+    <form ng-submit="self.createPet()">
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="self.Pet.Name" />
+        </div>
+        <button data-spinner-color="black" data-style="zoom-in" ng-ladda="createPet" class="btn btn-primary" type="submit">Create</button>
+    </form>
+
+    <label>Pet has been created at {{ self.Pet.CreatedDate}}</label>
+</div>
+
+
+
+

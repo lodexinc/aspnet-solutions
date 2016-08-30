@@ -50,6 +50,7 @@
     <Compile Include="Commands\CreateIssueCommand.cs" />
     <Compile Include="Commands\CreateProjectCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
+    <Compile Include="Commands\Pet.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IIssueService.cs" />
