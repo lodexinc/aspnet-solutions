@@ -18,8 +18,7 @@ namespace Scrum.EntityFramework.Migrations
                         LastName = c.String(),
                         DateOfBirth = c.DateTime(),
                     })
-                .PrimaryKey(t => t.ID);
-            
+                .PrimaryKey(t => t.ID);            
         }
         
         public override void Down()

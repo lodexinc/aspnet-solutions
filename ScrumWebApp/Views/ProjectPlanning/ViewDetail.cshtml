@@ -9,7 +9,7 @@
 @section scripts {
     <script src="~/Scripts/App/ViewProjectPlanningDetails/project-plan.module.js"></script>
     <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/project-plan-overview.controller.js"></script>
-<script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/sprint.controller.js"></script>
+    <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/sprint.controller.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             angular.bootstrap(document.getElementById("mainBody"), ['ProjectPlanModule']);
@@ -31,7 +31,7 @@
                 <button class="btn btn-default btn-xs" href="" ng-click="toggle()"><span class="glyphicon glyphicon-list"></span></button>
                 <div pageslide ps-open="checked"
                      ps-side="left"
-                     ps-size="150px"
+                     ps-size="200px"
                      ps-container="mainContent">
 
                     <div id="demo-right">
@@ -163,15 +163,13 @@
                         </div>
                     </div>
 
-                    <div id="backLog" class='containerVertical list-group' ng-class="{'sprint-empty': projectPlanViewCtrl.Backlog.Issues.length==0}">
+                    <div id="backLog" class='containerVertical list-group' ng-class="{'sprint-empty': projectPlanViewCtrl.Backlog.Issues.length == 0}">
                         <div class="list-group-item" ng-repeat="issue in projectPlanViewCtrl.Backlog.Issues" context-menu="menuOptions">
                             {{issue.Key}}
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-xs" ng-click="open('md', '/Issue/CreateIssue')">Create issue</button>
-
-
                 </td>
             </tr>
         </tbody>
