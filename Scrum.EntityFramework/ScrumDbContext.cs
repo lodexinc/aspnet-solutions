@@ -15,6 +15,7 @@ namespace Scrum.EntityFramework
         public DbSet<IssueType> IssueTypes { get; set; }
         public DbSet<IssueStatus> IssueStatuses { get; set; }
         public DbSet<Priority> Priorities { get; set; }
+        public DbSet<Sprint> Sprints { get; set; }
 
         public ScrumDbContext() : base("ScrumDbContext")
         {

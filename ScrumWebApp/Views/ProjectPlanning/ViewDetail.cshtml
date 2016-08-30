@@ -9,17 +9,17 @@
 @section scripts {
     <script src="~/Scripts/App/ViewProjectPlanningDetails/project-plan.module.js"></script>
     <script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/project-plan-overview.controller.js"></script>
+<script src="~/Scripts/App/ViewProjectPlanningDetails/Controllers/sprint.controller.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            angular.bootstrap(document.getElementById("mainBody"), ['ProjectPlanModule']);
+
+        });
+    </script>
 }
 
 
-@section jsCode {
-    $(document).ready(function() {
-    @*$("#registerForm").attr("block-ui", "");
-        $("#registerForm").attr("block-ui-pattern", "{{blockPattern}}");*@
-    angular.bootstrap(document.getElementById("mainBody"), ['ProjectPlanModule']);
 
-    });
-}
 
 <div id="projectPlanDetail" class="panel panel-default main-panel"
      ng-controller="ProjectPlanOverviewController as projectPlanViewCtrl"
@@ -154,36 +154,23 @@
                         <div class="col-md-2 col-sm-3 col-xs-3">
                             <label class="control-label">
                                 Backlog <span class="badge" ng-hide="projectPlanViewCtrl.isLoading">
-                                    {{projectPlanViewCtrl.ProjectDetailView.TotalIssues}} Issues
+                                    {{projectPlanViewCtrl.Backlog.Issues.length}} Issues
                                 </span>
                             </label>
                         </div>
                         <div class="col-md-10 col-sm-9 col-xs-9 text-right">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="open('md', '/Project/CreateProject')">Create Sprint</button>
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="projectPlanViewCtrl.openCreateSprint()">Create Sprint</button>
                         </div>
                     </div>
 
-                    <div class='containerVertical list-group'>
-                        <div class="list-group-item">
-                            Move me, but you can only drop me in one of these containers.
-
-                        </div><div class="list-group-item">
-                            Move me, but you can only drop me in one of these containers.
-
-                        </div>
-                        <div class="list-group-item">
-                            Move me, but you can only drop me in one of these containers.
-
-                        </div>
-                        <div class="list-group-item">
-                            Move me, but you can only drop me in one of these containers.
-
-                        </div>
-                        <div class="list-group-item">
-                            Move me, but you can only drop me in one of these containers.
-
+                    <div id="backLog" class='containerVertical list-group' ng-class="{'sprint-empty': projectPlanViewCtrl.Backlog.Issues.length==0}">
+                        <div class="list-group-item" ng-repeat="issue in projectPlanViewCtrl.Backlog.Issues" context-menu="menuOptions">
+                            {{issue.Key}}
                         </div>
                     </div>
+
+                    <button type="submit" class="btn btn-primary btn-xs" ng-click="open('md', '/Issue/CreateIssue')">Create issue</button>
+
 
                 </td>
             </tr>

@@ -17,18 +17,6 @@
             $scope.checked = !$scope.checked
         }
 
-        // 
-
-        $scope.player = {
-            gold: 100
-        };
-
-        $scope.items = [
-            { name: 'Small Health Potion', cost: 4 },
-            { name: 'Small Mana Potion', cost: 5 },
-            { name: 'Iron Short Sword', cost: 12 }
-        ];
-
         $scope.menuOptions = [
             ['Edit issue', function ($itemScope) {
                 $scope.player.gold -= $itemScope.issue.Key;
@@ -39,37 +27,6 @@
                 $scope.player.gold += $itemScope.issue.Key;
             }, function ($itemScope) {
                 return $itemScope.issue.Key.match(/Iron/) == null;
-            }]
-        ];
-
-        $scope.otherMenuOptions = [
-            ['Favorite Color', function ($itemScope, $event, color) {
-                alert(color);
-            }]
-        ];
-
-        var customHtml = '<div style="cursor: pointer; background-color: pink"><i class="glyphicon glyphicon-ok-sign"></i> Testing Custom </div>';
-        var customItem = {
-            html: customHtml,
-            click: function ($itemScope, $event, value) {
-                alert("custom html");
-            }
-        };
-
-        var customDisabledItem = {
-            html: "I'm Disabled",
-            click: function ($itemScope, $event, value) {
-                console.log("expect to never get here!");
-            },
-            enabled: function ($itemScope, $event, value) {
-                console.log("can't click");
-                return false;
-            }
-        };
-
-        $scope.customHTMLOptions = [customItem, customDisabledItem,
-            ['Example 1', function ($itemScope, $event, value) {
-                alert("Example 1");
             }]
         ];
 
@@ -114,12 +71,26 @@
             },
         ];
 
+        self.Backlog = { };
+
+        self.Backlog.Issues = [
+            {
+                Key: 'Issue 1 - ' + "back log"
+            },
+            {
+                Key: 'Issue 2 - ' + "back log"
+            }];
+
         self.init = init;
+
+        self.openCreateSprint = openCreateSprint;
 
         $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
             var container1 = document.querySelector('#Sprint_1'),
                 container2 = document.querySelector('#Sprint_2'),
-                container3 = document.querySelector('#Sprint_3');
+                container3 = document.querySelector('#Sprint_3'),
+                backlog = document.querySelector('#backLog');
+
             dragularService([container1], {
                 containersModel: [self.Sprints[0].Issues]
             });
@@ -131,6 +102,10 @@
             dragularService([container3], {
                 containersModel: [self.Sprints[2].Issues]
             });
+
+            dragularService([backlog], {
+                containersModel: [self.Backlog.Issues]
+            });
         });
 
 
@@ -139,10 +114,14 @@
             self.ProjectDetailView = projectDetailView;
         }
 
+        function openCreateSprint() {
+            $scope.open('md', '/ProjectPlanning/CreateSprint?project=' + self.ProjectDetailView.ProjectID);
+        }
+
         self.getProjectDetailView = function (callBackParams) {
             if (callBackParams.ProjectID === self.ProjectDetailView.ProjectID) {
                 self.isLoading = true;
-                $http.get('/ProjectPlaning/ViewDetail', { params: { project: self.ProjectDetailView.ProjectID } })
+                $http.get('/ProjectPlanning/ViewDetail', { params: { project: self.ProjectDetailView.ProjectID } })
                     .then(function successCallback(response) {
                         self.isLoading = false;
 
@@ -164,8 +143,10 @@
 
 
         ObserverService.attach(self.getProjectDetailView, 'issue_created', 'viewProjectPlanDetail');
+        ObserverService.attach(self.getProjectDetailView, 'sprint_created', 'viewProjectPlanDetail');
         $scope.$on('$destroy', function handler() {
             ObserverService.detachByEventAndId('issue_created', 'viewProjectPlanDetail');
+            ObserverService.detachByEventAndId('sprint_created', 'viewProjectPlanDetail');
         });
     };
 })();

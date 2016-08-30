@@ -48,6 +48,9 @@ namespace ScrumWebApp
 
                       "~/Scripts/dragular/dragular.css",
 
+                      "~/Scripts/isteven-multi-select/isteven-multi-select.css",
+
+
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -96,7 +99,9 @@ namespace ScrumWebApp
 
                  "~/Scripts/ng-pageslide/angular-pageslide.js",
 
-                 "~/Scripts/ui-bootstrap-contextMenu/contextMenu.js", 
+                 "~/Scripts/ui-bootstrap-contextMenu/contextMenu.js",
+
+                 "~/Scripts/isteven-multi-select/isteven-multi-select.js",
 
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));

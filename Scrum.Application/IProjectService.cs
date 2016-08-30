@@ -13,6 +13,9 @@ namespace Scrum.Application
         List<User> GetMembers(string projectId);
 
         ProjectDetailView ViewProjectDetail(string id);
-        
+
+        Sprint CreateSprint(CreateSprintCommand command);
+
+        List<Sprint> SprintsOfProject(string project);
     }
 }

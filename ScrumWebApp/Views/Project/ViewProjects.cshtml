@@ -13,7 +13,7 @@
     $(document).ready(function() {
     $("#registerForm").attr("block-ui", "");
     $("#registerForm").attr("block-ui-pattern", "{{blockPattern}}");
-    angular.bootstrap(document.getElementById("mainBody")a, ['ViewProjectModule']);
+    angular.bootstrap(document.getElementById("mainBody"), ['ViewProjectModule']);
 
     });
 }
@@ -56,7 +56,7 @@
 
                         <tbody ng-show="!self.isLoading">
                             <tr ng-repeat="project in self.projects">
-                                <td><a href="/ProjectPlaning/ViewDetail?project={{project.ID}}">{{project.Name}}</a></td>
+                                <td><a href="/ProjectPlanning/ViewDetail?project={{project.ID}}">{{project.Name}}</a></td>
                                 <td>{{project.Key}}</td>
                                 <td>{{project.Lead}}</td>
                             </tr>

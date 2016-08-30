@@ -16,6 +16,7 @@ namespace ScrumWebApp
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IProjectRepository, ProjectRepository>();
             container.RegisterType<IIssueRepository, IssueRepository>();
+            container.RegisterType<ISprintRepository, SprintRepository>();
 
             container.RegisterType<IAuthenticationService, AuthenticationService>();
             container.RegisterType<IRegistrationService, RegistrationService>();

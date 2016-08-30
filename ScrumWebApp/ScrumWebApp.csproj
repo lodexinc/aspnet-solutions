@@ -182,7 +182,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Controllers\ProjectPlaningController.cs" />
+    <Compile Include="Controllers\ProjectPlanningController.cs" />
     <Compile Include="DependencyResolver\UnityConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -281,6 +281,8 @@
     <Content Include="Scripts\dragular\dragular.js" />
     <Content Include="Scripts\dragular\dragular.min.css" />
     <Content Include="Scripts\dragular\dragular.min.js" />
+    <Content Include="Scripts\isteven-multi-select\isteven-multi-select.css" />
+    <Content Include="Scripts\isteven-multi-select\isteven-multi-select.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -349,8 +351,9 @@
     <Content Include="Views\Project\_CreateProject.cshtml" />
     <Content Include="Views\Project\ViewProjects.cshtml" />
     <Content Include="Scripts\smart-table\smart-table.min.js.map" />
-    <Content Include="Views\ProjectPlaning\ViewDetail.cshtml" />
+    <Content Include="Views\ProjectPlanning\ViewDetail.cshtml" />
     <Content Include="Views\Issue\SearchIssue.cshtml" />
+    <Content Include="Views\ProjectPlanning\_CreateSprint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

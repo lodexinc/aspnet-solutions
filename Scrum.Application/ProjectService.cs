@@ -14,14 +14,17 @@ namespace Scrum.Application
         private readonly IProjectRepository _projectRepository;
         private readonly IUserRepository _userRepository;
         private readonly IIssueRepository _issueRepository;
+        private readonly ISprintRepository _sprintRepository;
 
-        public ProjectService(IProjectRepository projectRepository, 
+        public ProjectService(IProjectRepository projectRepository,
             IUserRepository userRepository,
-            IIssueRepository issueRepository)
+            IIssueRepository issueRepository,
+            ISprintRepository sprintRepository)
         {
             this._projectRepository = projectRepository;
             this._userRepository = userRepository;
             this._issueRepository = issueRepository;
+            this._sprintRepository = sprintRepository;
         }
 
         public void CreateProject(CreateProjectCommand createProject)
@@ -57,7 +60,7 @@ namespace Scrum.Application
             issueTypes.ForEach(it =>
             {
                 var issueOfThisType = issueOfProjects.Where(i => i.IssueTypeID.Equals(it.ID, StringComparison.OrdinalIgnoreCase)).ToList();
-                if(issueOfThisType.Any())
+                if (issueOfThisType.Any())
                 {
                     statistics.Add(new IssueStatistics
                     {
@@ -74,6 +77,23 @@ namespace Scrum.Application
                 ProjectName = project.Name,
                 IssueStatistics = statistics
             };
+        }
+
+        public Sprint CreateSprint(CreateSprintCommand command)
+        {
+            Sprint sprint = new Sprint
+            {
+                ProjectID = Guid.Parse(command.ProjectID),
+                Name = command.Name,
+                Goal = command.Goal
+            };
+
+            return this._sprintRepository.Save(sprint);
+        }
+
+        public List<Sprint> SprintsOfProject(string project)
+        {
+            return this._sprintRepository.FindByProject(project);
         }
     }
 }
