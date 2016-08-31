@@ -5,9 +5,9 @@
     angular.module('ProjectPlanModule').controller("CreateSprintController", CreateSprintController);
 
     CreateSprintController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
-        'NotificationMessages', 'ObserverService', 'dragularService', '$window', 'ngLaddaService', 'valdr'];
+        'NotificationMessages', 'ObserverService', 'dragularService', '$window', 'valdr'];
     function CreateSprintController($scope,
-        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService, $window, ngLaddaService, valdr) {
+        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService, $window, valdr) {
 
         var regex = new RegExp('/project/searchProject', 'i');
         $scope.blockPattern = regex.toString();
@@ -30,7 +30,6 @@
         }                
 
         watchWindowHeight(self, $scope, $window);
-        ngLaddaService.register('POST', '/ProjectPlanning/CreateSprint', 'createSprint');
 
         valdr.addConstraints(sprintValidationProvider());
 

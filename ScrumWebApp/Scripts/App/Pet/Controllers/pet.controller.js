@@ -5,15 +5,15 @@
     angular.module('PetModule').controller("PetController", PetController);
 
     PetController.$inject = ['$scope', '$http', 'toastr', 'Urls', 'Flash',
-        'NotificationMessages', 'ObserverService', 'dragularService', 'ngLaddaService'];
+        'NotificationMessages', 'ObserverService', 'dragularService'];
     function PetController($scope,
-        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService, ngLaddaService) {
+        $http, toastr, Urls, Flash, NotificationMessages, ObserverService, dragularService) {
         var self = this;
 
         self.init = init;
         self.createPet = createPet;
 
-        ngLaddaService.register('POST', '/Pet/CreatePet', 'createPet');
+
 
         function init(pet) {
             self.Pet = pet;

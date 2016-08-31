@@ -93,11 +93,11 @@ function CreateModalInstanceController($scope, $http, $uibModalInstance, url, $c
     };
 }
 
-CreateProjectController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
-function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
+CreateProjectController.$inject = ['$scope', '$http', '$window', 'Urls', 'valdr', 'toastr', 'ObserverService'];
+function CreateProjectController($scope, $http, $window, Urls, valdr, toastr, ObserverService) {
     var self = this;
     watchWindowHeight(self, $scope, $window);
-    ngLaddaService.register('POST', '/Project/CreateProject', 'createProject');
+    
 
     valdr.addConstraints(projectValidationProvider());
 
@@ -137,15 +137,11 @@ function CreateProjectController($scope, $http, $window, ngLaddaService, Urls, v
     }
 }
 
-CreateIssueController.$inject = ['$scope', '$http', '$window', 'ngLaddaService', 'Urls', 'valdr', 'toastr', 'ObserverService'];
-function CreateIssueController($scope, $http, $window, ngLaddaService, Urls, valdr, toastr, ObserverService) {
+CreateIssueController.$inject = ['$scope', '$http', '$window', 'Urls', 'valdr', 'toastr', 'ObserverService'];
+function CreateIssueController($scope, $http, $window, Urls, valdr, toastr, ObserverService) {
 
     var self = this;
     watchWindowHeight(self, $scope, $window);
-    ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
-    ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
-    ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
-
     valdr.addConstraints(issueValidationProvider());
 
     self.CreateIssueCommand = {

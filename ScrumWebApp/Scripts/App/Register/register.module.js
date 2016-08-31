@@ -5,16 +5,6 @@
     angular.module('RegisterModule')
         .config(validationCofig);
 
-    angular.module('RegisterModule')
-        .run(Config);
-
-    Config.$inject = ['ngLaddaService', 'Urls'];
-    function Config(ngLaddaService, Urls) {
-
-        // link a httpRequest to a unique event/name
-        ngLaddaService.register('POST', Urls.REGISTER, 'register');
-    }
-
     function validationCofig(valdrProvider, valdrMessageProvider, ValidationMessages) {
         valdrProvider.addConstraints({
             'Register': {

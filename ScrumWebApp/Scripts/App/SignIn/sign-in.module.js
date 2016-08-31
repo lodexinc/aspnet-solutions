@@ -4,16 +4,6 @@
     angular.module('SignInModule', ['appCore']);
 
     angular.module('SignInModule')
-        .run(Config);
-
-    Config.$inject = ['ngLaddaService', 'Urls'];
-    function Config(ngLaddaService, Urls) {
-
-        // link a httpRequest to a unique event/name
-        ngLaddaService.register('POST', Urls.LOG_IN, 'sign-in');
-    }
-
-    angular.module('SignInModule')
         .config(validationCofig);
 
     function validationCofig(valdrProvider, valdrMessageProvider, ValidationMessages) {

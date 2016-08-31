@@ -67,4 +67,21 @@
         FlashProvider.setShowClose(true);
     }
 
+    angular.module('appCore')
+        .run(laddaServiceConfig);
+
+    laddaServiceConfig.$inject = ['ngLaddaService', 'Urls'];
+    function laddaServiceConfig(ngLaddaService, Urls) {
+        ngLaddaService.register('POST', Urls.LOG_IN, 'sign-in');
+        ngLaddaService.register('POST', '/Issue/CreateIssue', 'CreateIssue');
+        ngLaddaService.register('GET', '/Issue/IssueTypes', 'IssueTypes');
+        ngLaddaService.register('GET', '/Issue/Priorities', 'Priorities');
+        ngLaddaService.register('POST', '/Project/CreateProject', 'createProject');
+        ngLaddaService.register('POST', Urls.REGISTER, 'register');
+        ngLaddaService.register('POST', '/ProjectPlanning/CreateSprint', 'createSprint');
+        ngLaddaService.register('GET', '/project/SearchProject', 'searchProject');
+        ngLaddaService.register('POST', '/Pet/CreatePet', 'createPet');
+        ngLaddaService.register('POST', Urls.EDIT_PROFILE, 'editProfile');
+    }
+
 })();
