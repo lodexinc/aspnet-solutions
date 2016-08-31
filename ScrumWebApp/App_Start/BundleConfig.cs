@@ -103,6 +103,8 @@ namespace ScrumWebApp
 
                  "~/Scripts/isteven-multi-select/isteven-multi-select.js",
 
+                 "~/Scripts/angular-load/angular-load.js",
+
                  "~/Scripts/re-tree/re-tree.js",
                  "~/Scripts/ng-device-detector/ng-device-detector.js"));
         }

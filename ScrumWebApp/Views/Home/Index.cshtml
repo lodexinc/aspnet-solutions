@@ -4,13 +4,21 @@
 
 @section scripts {
     <script src="~/Scripts/App/Home/home.module.js"></script>
-    <script src="~/Scripts/App/Home/Controllers/home.controller.js"></script>
+
+    @*<script type="text/javascript" src="~/Scripts/App/Home/Controllers/home.controller.js"></script>*@
 }
 
 @section jsCode {
-    angular.bootstrap(document.getElementById("mainBody"), ['HomeModule']);    
+    angular.bootstrap(document.getElementById("mainBody"), ['HomeModule']);
 }
 
-<cube-grid-spinner id="spinInModal" compile-after="homeModuleReady"></cube-grid-spinner>
+@{ 
+    var homeModule = Request.Url.AbsolutePath + "/Scripts/App/Home/Controllers/home.controller.js";
+    homeModule = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + "/Scripts/App/Home/Controllers/home.controller.js";
+
+
+}
+
+<cube-grid-spinner id="spinInModal" compile-after="homeModuleReady" script-url="@homeModule"></cube-grid-spinner>
 
 

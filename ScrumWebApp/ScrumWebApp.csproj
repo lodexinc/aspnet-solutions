@@ -221,6 +221,8 @@
     <Content Include="Scripts\angular-flash\angular-flash.js" />
     <Content Include="Scripts\angular-flash\angular-flash.min.css" />
     <Content Include="Scripts\angular-flash\angular-flash.min.js" />
+    <Content Include="Scripts\angular-load\angular-load.js" />
+    <Content Include="Scripts\angular-load\angular-load.min.js" />
     <Content Include="Scripts\angular-observer\observers.js" />
     <Content Include="Scripts\angular-selectize\angular-selectize.js" />
     <Content Include="Scripts\angular-selectize\selectize\selectize.bootstrap3.css" />
@@ -255,6 +257,7 @@
     <Content Include="Scripts\App\Pet\pet.module.js" />
     <Content Include="Scripts\App\ViewProjectPlanningDetails\Controllers\sprint.controller.js" />
     <Content Include="Scripts\dragular\dragular.min.js.map" />
+    <Content Include="Scripts\angular-load\angular-load.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-bootstrap-checkbox.js" />
