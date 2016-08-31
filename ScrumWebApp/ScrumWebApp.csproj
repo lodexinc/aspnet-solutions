@@ -250,6 +250,7 @@
     <Content Include="Scripts\angular-flash\angular-flash.min.js.map" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\SmartASP.pubxml" />
+    <Content Include="Scripts\App\directives.js" />
     <Content Include="Scripts\App\Pet\Controllers\pet.controller.js" />
     <Content Include="Scripts\App\Pet\pet.module.js" />
     <Content Include="Scripts\App\ViewProjectPlanningDetails\Controllers\sprint.controller.js" />
@@ -358,6 +359,7 @@
     <Content Include="Views\Issue\SearchIssue.cshtml" />
     <Content Include="Views\ProjectPlanning\_CreateSprint.cshtml" />
     <Content Include="Views\Pet\Index.cshtml" />
+    <Content Include="Views\Home\_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

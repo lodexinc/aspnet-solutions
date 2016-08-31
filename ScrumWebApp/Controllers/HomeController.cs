@@ -14,6 +14,11 @@ namespace ScrumWebApp.Controllers
             return View();
         }
 
+        public ActionResult Home()
+        {
+            return PartialView("_Home");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

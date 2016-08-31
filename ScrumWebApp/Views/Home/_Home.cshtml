@@ -1,0 +1,60 @@
+﻿
+<script type="text/javascript">
+    $("#angularVersion").html($("#angularVersion").html() + angular.version.full);
+</script>
+
+<div ng-controller="HomeController as home">
+    <div class="jumbotron">
+        <h1>Start your career with us!</h1>
+        <h2>{{ topic }}</h2>
+        <div id="searchPredicate" class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form role="form">
+                    <div class="input-group input-group-lg">
+
+                        <input type="text" class="form-control input-lg" ng-model="home.search.keyword" placeholder="{{home.search.placeHolder}}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-lg" ng-click="home.beginSearch()">
+                                <span class="glyphicon glyphicon-search"></span>
+                                {{home.search.searchButtonLabel}}
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h3>{{ time }}</h3>
+        <h4 id="angularVersion">Angular's version: </h4>
+        <h5><strong>OS: {{os | uppercase}}</strong></h5>
+        <h5><strong>Browser: {{browser | uppercase}}</strong></h5>
+        <h5><strong>Device: {{device | uppercase}}</strong></h5>
+
+        <h5 ng-show="isDesktop"><strong>Device is desktop</strong></h5>
+
+        <h5 ng-show="isMobile"><strong>Device is mobile</strong></h5>
+
+        <h5 ng-show="isTablet"><strong>Device is tablet</strong></h5>
+    </div>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    .col-md-4
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    .col-md-8
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
