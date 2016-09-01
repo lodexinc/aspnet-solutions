@@ -1,10 +1,13 @@
 ﻿
-(function () {
+(function (angular) {
     'use strict';
 
     angular.module('HomeModule').controller("HomeController", HomeController);
 
-    HomeController.$inject = ['$scope', '$http', 'moment', 'deviceDetector'];
+    
+
+})(angular);
+HomeController.$inject = ['$scope', '$http', 'moment', 'deviceDetector'];
     function HomeController($scope, $http, moment, deviceDetector) {
         var self = this;
         self.SignInCommand = {
@@ -15,7 +18,7 @@
         }
 
         $scope.topic =
-           "Integrating ASP.NET MVC and AngularJS";
+           "Integrating ASP.NET MVC and AngularJS sdfsdfsd sdf sdf";
 
         $scope.time = moment().format('MMMM Do YYYY, h:mm:ss a') + ' - Time zone: ' + moment.tz.guess();
         $scope.os = deviceDetector.os + "/" + deviceDetector.os_version;
@@ -52,5 +55,3 @@
 
         initialize();
     }
-
-})();
