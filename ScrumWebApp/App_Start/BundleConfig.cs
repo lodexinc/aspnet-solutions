@@ -26,6 +26,7 @@ namespace ScrumWebApp
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/normalize.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/loading-bar.css",
